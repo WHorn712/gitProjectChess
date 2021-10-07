@@ -1,0 +1,1199 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Tabuleiro
+{
+    //0==Peao // 1==Cavalo // 2==Bispo // 3==Torre // 4==Dama // 5==Rei
+    private int typePecaMove;
+    private int pecaMoveCheck;
+    private int indexDesmove;
+    private string sit;
+    private bool enPassant;
+
+    //PEÇAS BRANCAS
+    private List<Peao> pb;
+    private List<Cavalo> cb;
+    private List<Bispo> bb;
+    private List<Torre> tb;
+    private List<Dama> db;
+    private Rei reiBranco;
+
+    //PEÇAS PRETAS
+    private List<Peao> pp;
+    private List<Cavalo> cp;
+    private List<Bispo> bp;
+    private List<Torre> tp;
+    private List<Dama> dp;
+    private Rei reiPreto;
+
+    public Tabuleiro()
+    {
+        enPassant = false;
+        sit = "";
+        indexDesmove = -1;
+        pecaMoveCheck = -1;
+        typePecaMove = -1;
+        pb = new List<Peao>();
+        pp = new List<Peao>();
+        for (int i = 0; i < 8; i++)
+        {
+            pb.Add(new Peao(0, 1, i));
+            pp.Add(new Peao(1, 6, i));
+        }
+        InitiateCavalo();
+        InitiateBispo();
+        InitiateTorre();
+        db = new List<Dama>();
+        dp = new List<Dama>();
+        db.Add(new Dama(0, 0, 3));
+        dp.Add(new Dama(1, 7, 3));
+        reiBranco = new Rei(0, 0, 4);
+        reiPreto = new Rei(1, 7, 4);
+        //Start();
+    }
+
+    public Tabuleiro(Tabuleiro tab)
+    {
+        typePecaMove = -1;
+        pb = tab.getPb();
+        pp = tab.getPp();
+        cb = tab.getCb();
+        cp = tab.getCp();
+        bb = tab.getBb();
+        bp = tab.getBp();
+        tb = tab.getTb();
+        tp = tab.getTp();
+        db = tab.getDb();
+        dp = tab.getDp();
+        reiBranco = tab.getReiBranco();
+        reiPreto = tab.getReiPreto();
+    }
+    public bool EnPassant
+    {
+        get
+        {
+            return enPassant;
+        }
+        set
+        {
+            enPassant = value;
+        }
+    }
+    public bool getEnPassant()
+    {
+        return enPassant;
+    }
+    public List<Peao> getPb()
+    {
+        return pb;
+    }
+    public List<Peao> getPp()
+    {
+        return pp;
+    }
+    public List<Cavalo> getCb()
+    {
+        return cb;
+    }
+    public List<Cavalo> getCp()
+    {
+        return cp;
+    }
+    public List<Bispo> getBb()
+    {
+        return bb;
+    }
+    public List<Bispo> getBp()
+    {
+        return bp;
+    }
+    public List<Torre> getTb()
+    {
+        return tb;
+    }
+    public List<Torre> getTp()
+    {
+        return tp;
+    }
+    public List<Dama> getDb()
+    {
+        return db;
+    }
+    public List<Dama> getDp()
+    {
+        return dp;
+    }
+    public Rei getReiBranco()
+    {
+        return reiBranco;
+    }
+    public Rei getReiPreto()
+    {
+        return reiPreto;
+    }
+
+    public void setPb(List<Peao> pb)
+    {
+        this.pb = pb;
+    }
+    public void setPp(List<Peao> pp)
+    {
+        this.pp = pp;
+    }
+    public void setCb(List<Cavalo> cb)
+    {
+        this.cb = cb;
+    }
+    public void setCp(List<Cavalo> cp)
+    {
+        this.cp = cp;
+    }
+    public void setReiBranco(Rei reiBranco)
+    {
+        this.reiBranco = reiBranco;
+    }
+    public void setReiPreto(Rei reiPreto)
+    {
+        this.reiPreto = reiPreto;
+    }
+    public void setBb(List<Bispo> bb)
+    {
+        this.bb = bb;
+    }
+    public void setBp(List<Bispo> bp)
+    {
+        this.bp = bp;
+    }
+    public void setTb(List<Torre> tb)
+    {
+        this.tb = tb;
+    }
+    public void setTp(List<Torre> tp)
+    {
+        this.tp = tp;
+    }
+    public void setDb(List<Dama> db)
+    {
+        this.db = db;
+    }
+    public void setDp(List<Dama> dp)
+    {
+        this.dp = dp;
+    }
+
+    public void isEnPassant()
+    {
+        enPassant = true;
+    }
+
+    private void InitiateCavalo()
+    {
+        cb = new List<Cavalo>();
+        cp = new List<Cavalo>();
+        cb.Add(new Cavalo(0, 0, 1));
+        cb.Add(new Cavalo(0, 0, 6));
+        cp.Add(new Cavalo(1, 7, 1));
+        cp.Add(new Cavalo(1, 7, 6));
+    }
+
+    private void InitiateBispo()
+    {
+        bb = new List<Bispo>();
+        bp = new List<Bispo>();
+        bb.Add(new Bispo(0, 0, 2));
+        bb.Add(new Bispo(0, 0, 5));
+        bp.Add(new Bispo(1, 7, 2));
+        bp.Add(new Bispo(1, 7, 5));
+    }
+
+    private void InitiateTorre()
+    {
+        tb = new List<Torre>();
+        tp = new List<Torre>();
+        tb.Add(new Torre(0, 0, 0));
+        tb.Add(new Torre(0, 0, 7));
+        tp.Add(new Torre(1, 7, 0));
+        tp.Add(new Torre(1, 7, 7));
+
+    }
+
+    public int AnalizePeaoLinha(int vez)
+    {
+        if (vez == 0)
+        {
+            for (int i = 0; i < pb.Count; i++)
+            {
+                if (pb[i].Linha() == 7)
+                {
+                    return i;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < pp.Count; i++)
+            {
+                if (pp[i].Linha() == 0)
+                {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    public void makeTransformPromotion(int a, int index, int cor)
+    {
+        if (cor == 0)
+        {
+            if (a == 1)
+            {
+                db.Add(new Dama(0, pb[index].Linha(), pb[index].Coluna()));
+            }
+            else if (a == 2)
+            {
+                tb.Add(new Torre(0, pb[index].Linha(), pb[index].Coluna()));
+            }
+            else if (a == 3)
+            {
+                bb.Add(new Bispo(0, pb[index].Linha(), pb[index].Coluna()));
+            }
+            else if (a == 4)
+            {
+                cb.Add(new Cavalo(0, pb[index].Linha(), pb[index].Coluna()));
+            }
+            pb.Remove(pb[index]);
+        }
+        else
+        {
+            if (a == 1)
+            {
+                dp.Add(new Dama(1, pp[index].Linha(), pp[index].Coluna()));
+            }
+            else if (a == 2)
+            {
+                tp.Add(new Torre(1, pp[index].Linha(), pp[index].Coluna()));
+            }
+            else if (a == 3)
+            {
+                bp.Add(new Bispo(1, pp[index].Linha(), pp[index].Coluna()));
+            }
+            else if (a == 4)
+            {
+                cp.Add(new Cavalo(1, pp[index].Linha(), pp[index].Coluna()));
+            }
+            pp.Remove(pp[index]);
+        }
+    }
+
+    public bool PositionisEmpty(int lin, int col)
+    {
+        for (int i = 0; i < pb.Count; i++)
+        {
+            if (pb[i].isPosition(lin, col))
+            {
+                return false;
+            }
+        }
+        for (int i = 0; i < pp.Count; i++)
+        {
+            if (pp[i].isPosition(lin, col))
+            {
+                return false;
+            }
+        }
+
+        for (int i = 0; i < cb.Count; i++)
+        {
+            if (cb[i].isPosition(lin, col))
+            {
+                return false;
+            }
+        }
+        for (int i = 0; i < cp.Count; i++)
+        {
+            if (cp[i].isPosition(lin, col))
+            {
+                return false;
+            }
+        }
+        for (int i = 0; i < bb.Count; i++)
+        {
+            if (bb[i].isPosition(lin, col))
+            {
+                return false;
+            }
+        }
+        for (int i = 0; i < bp.Count; i++)
+        {
+            if (bp[i].isPosition(lin, col))
+            {
+                return false;
+            }
+        }
+        for (int i = 0; i < tb.Count; i++)
+        {
+            if (tb[i].isPosition(lin, col))
+            {
+                return false;
+            }
+        }
+        for (int i = 0; i < tp.Count; i++)
+        {
+            if (tp[i].isPosition(lin, col))
+            {
+                return false;
+            }
+        }
+        for (int i = 0; i < db.Count; i++)
+        {
+            if (db[i].isPosition(lin, col))
+            {
+                return false;
+            }
+        }
+        for (int i = 0; i < dp.Count; i++)
+        {
+            if (dp[i].isPosition(lin, col))
+            {
+                return false;
+            }
+        }
+        if (reiBranco.isPosition(lin, col))
+        {
+            return false;
+        }
+        if (reiPreto.isPosition(lin, col))
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public bool PositionisEmptyBranco(int lin, int col, int type)
+    {
+        //type==1 -> remove
+        for (int i = 0; i < pb.Count; i++)
+        {
+            if (pb[i].isPosition(lin, col))
+            {
+                if (type == 1)
+                {
+                    pecaMoveCheck = 0;
+                    pb.Remove(pb[i]);
+                }
+                return false;
+            }
+        }
+        for (int i = 0; i < cb.Count; i++)
+        {
+            if (cb[i].isPosition(lin, col))
+            {
+                if (type == 1)
+                {
+                    pecaMoveCheck = 1;
+                    cb.Remove(cb[i]);
+                }
+                return false;
+            }
+        }
+        for (int i = 0; i < bb.Count; i++)
+        {
+            if (bb[i].isPosition(lin, col))
+            {
+                if (type == 1)
+                {
+                    pecaMoveCheck = 2;
+                    bb.Remove(bb[i]);
+                }
+                return false;
+            }
+        }
+        for (int i = 0; i < tb.Count; i++)
+        {
+            if (tb[i].isPosition(lin, col))
+            {
+                if (type == 1)
+                {
+                    pecaMoveCheck = 3;
+                    tb.Remove(tb[i]);
+                }
+                return false;
+            }
+        }
+        for (int i = 0; i < db.Count; i++)
+        {
+            if (db[i].isPosition(lin, col))
+            {
+                if (type == 1)
+                {
+                    pecaMoveCheck = 4;
+                    db.Remove(db[i]);
+                }
+                return false;
+            }
+        }
+        if (reiBranco.isPosition(lin, col))
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public bool PositionisEmptyPreto(int lin, int col, int type)
+    {
+        for (int i = 0; i < pp.Count; i++)
+        {
+            if (pp[i].isPosition(lin, col))
+            {
+                if (type == 1)
+                {
+                    pecaMoveCheck = 5;
+                    pp.Remove(pp[i]);
+                }
+                return false;
+            }
+        }
+        for (int i = 0; i < cp.Count; i++)
+        {
+            if (cp[i].isPosition(lin, col))
+            {
+                if (type == 1)
+                {
+                    pecaMoveCheck = 6;
+                    cp.Remove(cp[i]);
+                }
+                return false;
+            }
+        }
+        for (int i = 0; i < bp.Count; i++)
+        {
+            if (bp[i].isPosition(lin, col))
+            {
+                if (type == 1)
+                {
+                    pecaMoveCheck = 7;
+                    bp.Remove(bp[i]);
+                }
+                return false;
+            }
+        }
+        for (int i = 0; i < tp.Count; i++)
+        {
+            if (tp[i].isPosition(lin, col))
+            {
+                if (type == 1)
+                {
+                    pecaMoveCheck = 8;
+                    tp.Remove(tp[i]);
+                }
+                return false;
+            }
+        }
+        for (int i = 0; i < dp.Count; i++)
+        {
+            if (dp[i].isPosition(lin, col))
+            {
+                if (type == 1)
+                {
+                    pecaMoveCheck = 9;
+                    dp.Remove(dp[i]);
+                }
+                return false;
+            }
+        }
+        if (reiPreto.isPosition(lin, col))
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public void ReecolockPeca(int lin, int col)
+    {
+        if (pecaMoveCheck == 0)
+        {
+            pb.Add(new Peao(0, lin, col));
+        }
+        else if (pecaMoveCheck == 1)
+        {
+            cb.Add(new Cavalo(0, lin, col));
+        }
+        else if (pecaMoveCheck == 2)
+        {
+            bb.Add(new Bispo(0, lin, col));
+        }
+        else if (pecaMoveCheck == 3)
+        {
+            tb.Add(new Torre(0, lin, col));
+        }
+        else if (pecaMoveCheck == 4)
+        {
+            db.Add(new Dama(0, lin, col));
+        }
+        else if (pecaMoveCheck == 5)
+        {
+            pp.Add(new Peao(1, lin, col));
+        }
+        else if (pecaMoveCheck == 6)
+        {
+            cp.Add(new Cavalo(1, lin, col));
+        }
+        else if (pecaMoveCheck == 7)
+        {
+            bp.Add(new Bispo(1, lin, col));
+        }
+        else if (pecaMoveCheck == 8)
+        {
+            tp.Add(new Torre(1, lin, col));
+        }
+        else if (pecaMoveCheck == 9)
+        {
+            dp.Add(new Dama(1, lin, col));
+        }
+    }
+
+    public bool isAfogamento(int vez)
+    {
+        int c = 0;
+        if (vez == 0)
+        {
+            c = 1;
+        }
+        if (c == 0)
+        {
+            if (reiBranco.isCheck(this))
+            {
+                return false;
+            }
+            for (int i = 0; i < pb.Count; i++)
+            {
+                if (pb[i].AnalizeMoviment(this))
+                {
+                    return false;
+                }
+            }
+            for (int i = 0; i < cb.Count; i++)
+            {
+                if (cb[i].AnalizeMoviment(this))
+                {
+                    return false;
+                }
+            }
+            for (int i = 0; i < bb.Count; i++)
+            {
+                if (bb[i].AnalizeMoviment(this))
+                {
+                    return false;
+                }
+            }
+            for (int i = 0; i < tb.Count; i++)
+            {
+                if (tb[i].AnalizeMoviment(this))
+                {
+                    return false;
+                }
+            }
+            for (int i = 0; i < db.Count; i++)
+            {
+                if (db[i].AnalizeMovimentisAfog(this))
+                {
+                    return false;
+                }
+            }
+            return !reiBranco.AnalizeMoviment(this);
+        }
+        else
+        {
+            if (reiPreto.isCheck(this))
+            {
+                return false;
+            }
+            for (int i = 0; i < pp.Count; i++)
+            {
+                if (pp[i].AnalizeMoviment(this))
+                {
+                    return false;
+                }
+            }
+            for (int i = 0; i < cp.Count; i++)
+            {
+                if (cp[i].AnalizeMoviment(this))
+                {
+                    return false;
+                }
+            }
+            for (int i = 0; i < bp.Count; i++)
+            {
+                if (bp[i].AnalizeMoviment(this))
+                {
+                    return false;
+                }
+            }
+            for (int i = 0; i < tp.Count; i++)
+            {
+                if (tp[i].AnalizeMoviment(this))
+                {
+                    return false;
+                }
+            }
+            for (int i = 0; i < dp.Count; i++)
+            {
+                if (dp[i].AnalizeMovimentisAfog(this))
+                {
+                    return false;
+                }
+            }
+            return !reiPreto.AnalizeMoviment(this);
+        }
+    }
+
+    private bool isCkeckMate(int cor)
+    {
+        if (cor == 0)
+        {
+            return reiBranco.isCheckMate(this);
+        }
+        else
+        {
+            return reiPreto.isCheckMate(this);
+        }
+    }
+
+    public bool isMoveCheck(int lin, int col, int cor, int l, int c)
+    {
+        if (isPosition(lin, col))
+        {
+            return ToMove(lin, col, cor, l, c);
+        }
+        return false;
+    }
+
+    public int getPositionPecaId(int lin, int col)
+    {
+        for (int i = 0; i < pb.Count; i++)
+        {
+            if (pb[i].isPosition(lin, col))
+            {
+                return 0;
+            }
+        }
+        for (int i = 0; i < pp.Count; i++)
+        {
+            if (pp[i].isPosition(lin, col))
+            {
+                return 1;
+            }
+        }
+        for (int i = 0; i < cb.Count; i++)
+        {
+            if (cb[i].isPosition(lin, col))
+            {
+                return 2;
+            }
+        }
+        for (int i = 0; i < cp.Count; i++)
+        {
+            if (cp[i].isPosition(lin, col))
+            {
+                return 3;
+            }
+        }
+        for (int i = 0; i < bb.Count; i++)
+        {
+            if (bb[i].isPosition(lin, col))
+            {
+                return 4;
+            }
+        }
+        for (int i = 0; i < bp.Count; i++)
+        {
+            if (bp[i].isPosition(lin, col))
+            {
+                return 5;
+            }
+        }
+        for (int i = 0; i < tb.Count; i++)
+        {
+            if (tb[i].isPosition(lin, col))
+            {
+                return 6;
+            }
+        }
+        for (int i = 0; i < tp.Count; i++)
+        {
+            if (tp[i].isPosition(lin, col))
+            {
+                return 7;
+            }
+        }
+        for(int i=0;i<db.Count;i++)
+        {
+            if(db[i].isPosition(lin,col))
+            {
+                return 8;
+            }
+        }
+        for (int i = 0; i < dp.Count; i++)
+        {
+            if (dp[i].isPosition(lin, col))
+            {
+                return 9;
+            }
+        }
+        if(reiBranco.isPosition(lin,col))
+        {
+            return 10;
+        }
+        if(reiPreto.isPosition(lin,col))
+        {
+            return 11;
+        }
+        return -1;
+    }
+
+    public string getPositionPeca(int lin, int col)
+    {
+        for (int i = 0; i < pb.Count; i++)
+        {
+            if (pb[i].isPosition(lin, col))
+            {
+                return "PB";
+            }
+        }
+        for (int i = 0; i < pp.Count; i++)
+        {
+            if (pp[i].isPosition(lin, col))
+            {
+                return "PP";
+            }
+        }
+        for (int i = 0; i < cb.Count; i++)
+        {
+            if (cb[i].isPosition(lin, col))
+            {
+                return "CB";
+            }
+        }
+        for (int i = 0; i < cp.Count; i++)
+        {
+            if (cp[i].isPosition(lin, col))
+            {
+                return "CP";
+            }
+        }
+        for (int i = 0; i < bb.Count; i++)
+        {
+            if (bb[i].isPosition(lin, col))
+            {
+                return "BB";
+            }
+        }
+        for (int i = 0; i < bp.Count; i++)
+        {
+            if (bp[i].isPosition(lin, col))
+            {
+                return "BP";
+            }
+        }
+        for (int i = 0; i < tb.Count; i++)
+        {
+            if (tb[i].isPosition(lin, col))
+            {
+                return "TB";
+            }
+        }
+        for (int i = 0; i < tp.Count; i++)
+        {
+            if (tp[i].isPosition(lin, col))
+            {
+                return "TP";
+            }
+        }
+        return "";
+    }
+
+    private bool OtherPossibiltyAnalyze()
+    {
+        return false;
+    }
+
+    public bool isCheckMateReiEndGame(int cor)
+    {
+        if (cor == 0)
+        {
+            if (reiPreto.isCheckMate(this) == false)
+            {
+                sit = "CHECK MATE. BRANCO VENCEU";
+                return false;
+            }
+        }
+        else
+        {
+            if (reiBranco.isCheckMate(this) == false)
+            {
+                sit = "CHECK MATE. PRETO VENCEU";
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //lin E col == POSIÇÃO DE ORIGEM // l E c == POSIÇÃO DE DESTINO
+    public bool isMove(int lin, int col, int cor, int l, int c)
+    {
+        if (isPosition(lin, col))
+        {
+            if (reiBranco.isCheck(this) || reiPreto.isCheck(this))
+            {
+                Debug.Log("REI EM CHECK");
+                if (PositionisEmpty(l, c))
+                {
+                    bool ok = ToMove(lin, col, cor, l, c);
+                    if (reiBranco.isCheck(this) || reiPreto.isCheck(this))
+                    {
+                        if (ok)
+                        {
+                            DesMove(lin, col, cor);
+                        }
+                        return false;
+                    }
+                    else
+                    {
+
+                        return true;
+                    }
+                }
+                else
+                {
+                    int c2 = 3;
+                    if (cor == 0)
+                    {
+                        c2 = 1;
+                    }
+                    else
+                    {
+                        c2 = 0;
+                    }
+                    bool ok = ToMove(lin, col, cor, l, c);
+                    if (reiBranco.isCheck(this) || reiPreto.isCheck(this))
+                    {
+                        if (ok)
+                        {
+                            DesMove(lin, col, cor);
+                        }
+                        ReecolockPeca(l, c);
+                        return false;
+                    }
+                    return true;
+                }
+            }
+            else
+            {
+                return ToMove(lin, col, cor, l, c);
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private bool DesMove(int lin, int col, int cor)
+    {
+        if (typePecaMove == 0 && cor == 0)
+        {
+            pb[indexDesmove].setColuna(col);
+            pb[indexDesmove].setLinha(lin);
+        }
+        else if (typePecaMove == 1 && cor == 0)
+        {
+            cb[indexDesmove].setColuna(col);
+            cb[indexDesmove].setLinha(lin);
+        }
+        else if (typePecaMove == 2 && cor == 0)
+        {
+            bb[indexDesmove].setColuna(col);
+            bb[indexDesmove].setLinha(lin);
+        }
+        else if (typePecaMove == 3 && cor == 0)
+        {
+            tb[indexDesmove].setColuna(col);
+            tb[indexDesmove].setLinha(lin);
+        }
+        else if (typePecaMove == 4 && cor == 0)
+        {
+            db[indexDesmove].setColuna(col);
+            db[indexDesmove].setLinha(lin);
+        }
+        else if (typePecaMove == 5 && cor == 0)
+        {
+
+        }
+        else if (typePecaMove == 0 && cor == 1)
+        {
+            pp[indexDesmove].setColuna(col);
+            pp[indexDesmove].setLinha(lin);
+        }
+        else if (typePecaMove == 1 && cor == 1)
+        {
+            cp[indexDesmove].setColuna(col);
+            cp[indexDesmove].setLinha(lin);
+        }
+        else if (typePecaMove == 2 && cor == 1)
+        {
+            bp[indexDesmove].setColuna(col);
+            bp[indexDesmove].setLinha(lin);
+        }
+        else if (typePecaMove == 3 && cor == 1)
+        {
+            tp[indexDesmove].setColuna(col);
+            tp[indexDesmove].setLinha(lin);
+        }
+        else if (typePecaMove == 4 && cor == 1)
+        {
+            dp[indexDesmove].setColuna(col);
+            dp[indexDesmove].setLinha(lin);
+        }
+        else if (typePecaMove == 5 && cor == 1)
+        {
+
+        }
+        return true;
+    }
+
+    private bool ToMove(int lin, int col, int cor, int l, int c)
+    {
+        bool ok = false;
+        if (cor == 0)
+        {
+            if (typePecaMove == 0)
+            {
+                for (int i = 0; i < pb.Count; i++)
+                {
+                    if (pb[i].isPosition(lin, col))
+                    {
+                        indexDesmove = i;
+                        bool x = pb[i].IsMove(l, c, this);
+                        return x;
+                    }
+                }
+            }
+            else if (typePecaMove == 1)
+            {
+                for (int i = 0; i < cb.Count; i++)
+                {
+                    if (cb[i].isPosition(lin, col))
+                    {
+                        indexDesmove = i;
+                        return cb[i].IsMove(l, c, this);
+                    }
+                }
+            }
+            else if (typePecaMove == 2)
+            {
+                for (int i = 0; i < bb.Count; i++)
+                {
+                    if (bb[i].isPosition(lin, col))
+                    {
+                        indexDesmove = i;
+                        return bb[i].IsMove(l, c, this);
+                    }
+                }
+            }
+            else if (typePecaMove == 3)
+            {
+                for (int i = 0; i < tb.Count; i++)
+                {
+                    if (tb[i].isPosition(lin, col))
+                    {
+                        indexDesmove = i;
+                        return tb[i].IsMove(l, c, this);
+                    }
+                }
+            }
+            else if (typePecaMove == 4)
+            {
+                for (int i = 0; i < db.Count; i++)
+                {
+                    if (db[i].isPosition(lin, col))
+                    {
+                        indexDesmove = i;
+                        return db[i].IsMove(l, c, this);
+                    }
+                }
+            }
+            else if (typePecaMove == 5)
+            {
+                return reiBranco.isMove(l, c, this);
+            }
+        }
+        else if (cor == 1)
+        {
+            if (typePecaMove == 0)
+            {
+                for (int i = 0; i < pp.Count; i++)
+                {
+                    if (pp[i].isPosition(lin, col))
+                    {
+                        indexDesmove = i;
+                        bool x = pp[i].IsMove(l, c, this);
+                        if (x && pp[i].Linha() == 0)
+                        {
+                            pp.Remove(pp[i]);
+                            dp.Add(new Dama(1, l, c));
+                            return true;
+                        }
+                        return x;
+                    }
+                }
+            }
+            else if (typePecaMove == 1)
+            {
+                for (int i = 0; i < cp.Count; i++)
+                {
+                    if (cp[i].isPosition(lin, col))
+                    {
+                        indexDesmove = i;
+                        return cp[i].IsMove(l, c, this);
+                    }
+                }
+            }
+            else if (typePecaMove == 2)
+            {
+                for (int i = 0; i < bp.Count; i++)
+                {
+                    if (bp[i].isPosition(lin, col))
+                    {
+                        indexDesmove = i;
+                        return bp[i].IsMove(l, c, this);
+                    }
+                }
+            }
+            else if (typePecaMove == 3)
+            {
+                for (int i = 0; i < tp.Count; i++)
+                {
+                    if (tp[i].isPosition(lin, col))
+                    {
+                        indexDesmove = i;
+                        return tp[i].IsMove(l, c, this);
+                    }
+                }
+            }
+            else if (typePecaMove == 4)
+            {
+                for (int i = 0; i < dp.Count; i++)
+                {
+                    if (dp[i].isPosition(lin, col))
+                    {
+                        indexDesmove = i;
+                        return dp[i].IsMove(l, c, this);
+                    }
+                }
+            }
+            else if (typePecaMove == 5)
+            {
+                return reiPreto.isMove(l, c, this);
+            }
+        }
+        return ok;
+    }
+
+    //analiza se a posição está ocupada e defini qual a peça que a ocupa
+    private bool isPosition(int lin, int col)
+    {
+        for (int i = 0; i < pb.Count; i++)
+        {
+            if (pb[i].isPosition(lin, col))
+            {
+                typePecaMove = 0;
+                return true;
+            }
+        }
+        for (int i = 0; i < pp.Count; i++)
+        {
+            if (pp[i].isPosition(lin, col))
+            {
+                typePecaMove = 0;
+                return true;
+            }
+        }
+        for (int i = 0; i < cb.Count; i++)
+        {
+            if (cb[i].isPosition(lin, col))
+            {
+                typePecaMove = 1;
+                return true;
+            }
+        }
+        for (int i = 0; i < cp.Count; i++)
+        {
+            if (cp[i].isPosition(lin, col))
+            {
+                typePecaMove = 1;
+                return true;
+            }
+        }
+        for (int i = 0; i < bb.Count; i++)
+        {
+            if (bb[i].isPosition(lin, col))
+            {
+                typePecaMove = 2;
+                return true;
+            }
+        }
+        for (int i = 0; i < bp.Count; i++)
+        {
+            if (bp[i].isPosition(lin, col))
+            {
+                typePecaMove = 2;
+                return true;
+            }
+        }
+        for (int i = 0; i < tb.Count; i++)
+        {
+            if (tb[i].isPosition(lin, col))
+            {
+                typePecaMove = 3;
+                return true;
+            }
+        }
+        for (int i = 0; i < tp.Count; i++)
+        {
+            if (tp[i].isPosition(lin, col))
+            {
+                typePecaMove = 3;
+                return true;
+            }
+        }
+        for (int i = 0; i < db.Count; i++)
+        {
+            if (db[i].isPosition(lin, col))
+            {
+                typePecaMove = 4;
+                return true;
+            }
+        }
+        for (int i = 0; i < dp.Count; i++)
+        {
+            if (dp[i].isPosition(lin, col))
+            {
+                typePecaMove = 4;
+                return true;
+            }
+        }
+        if (reiBranco.isPosition(lin, col))
+        {
+            typePecaMove = 5;
+            return true;
+        }
+        if (reiPreto.isPosition(lin, col))
+        {
+            typePecaMove = 5;
+            return true;
+        }
+        return false;
+    }
+}
