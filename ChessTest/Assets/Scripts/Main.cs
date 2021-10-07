@@ -77,6 +77,7 @@ public class Main : MonoBehaviour
     {
         int a = go.transform.GetSiblingIndex();
         int b = go.transform.parent.GetSiblingIndex();
+        int c = vez; 
         
         if (isSelect)
         {
@@ -85,10 +86,25 @@ public class Main : MonoBehaviour
             colDes = b;
             imageSelect.transform.GetChild(colOr).transform.GetChild(linOr).gameObject.SetActive(false);
             bool ab = tab.isMove(linOr, colOr, vez, linDes, colDes);
-            Debug.Log(ab);
+            
             if (ab)
             {
+                Debug.Log(linOr+"."+colOr+"  /  "+linDes+"."+colDes);
                 ToMakeLance(linOr, colOr, linDes, colDes);
+                if(c==0)
+                {
+                    if(tab.getReiPreto().isCheck(tab))
+                    {
+                        
+                    }
+                }
+                else if(c==1)
+                {
+                    if(tab.getReiBranco().isCheck(tab))
+                    {
+
+                    }
+                }
             }
         }
         else

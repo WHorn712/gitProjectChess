@@ -78,35 +78,35 @@ public class Rei
 					return true;
 				}
 			}
-			//for (int i = 0; i < tab.getCp().Count; i++)
-			//{
-			//	if (tab.getCp()[i].isCheckRei(linha, coluna))
-			//	{
-			//		return true;
-			//	}
-			//}
-			//for (int i = 0; i < tab.getBp().Count; i++)
-			//{
-			//	if (tab.getBp()[i].isMovimentPadron(linha, coluna, tab, 1))
-			//	{
-			//		return true;
-			//	}
-			//}
-			//for (int i = 0; i < tab.getTp().Count; i++)
-			//{
-			//	if (tab.getTp()[i].IsMovimentPadron(linha, coluna, tab, 1))
-			//	{
-			//		return true;
-			//	}
-			//}
-			//for (int i = 0; i < tab.getDp().Count; i++)
-			//{
-			//	if (tab.getDp()[i].isMovimentPadron(linha, coluna, tab))
-			//	{
-			//		return true;
-			//	}
-			//}
-		}
+            for (int i = 0; i < tab.getCp().Count; i++)
+            {
+                if (tab.getCp()[i].isCheckRei(linha, coluna))
+                {
+                    return true;
+                }
+            }
+            for (int i = 0; i < tab.getBp().Count; i++)
+            {
+                if (tab.getBp()[i].isMovimentPadron(linha, coluna, tab, 1))
+                {
+                    return true;
+                }
+            }
+            for (int i = 0; i < tab.getTp().Count; i++)
+            {
+                if (tab.getTp()[i].IsMovimentPadron(linha, coluna, tab, 1))
+                {
+                    return true;
+                }
+            }
+            for (int i = 0; i < tab.getDp().Count; i++)
+            {
+                if (tab.getDp()[i].isMovimentPadron(linha, coluna, tab))
+                {
+                    return true;
+                }
+            }
+        }
 		else if (cor == 1)
 		{
 			for (int i = 0; i < tab.getPb().Count; i++)
@@ -116,35 +116,35 @@ public class Rei
 					return true;
 				}
 			}
-			//for (int i = 0; i < tab.getCb().Count; i++)
-			//{
-			//	if (tab.getCb()[i].isCheckRei(linha, coluna))
-			//	{
-			//		return true;
-			//	}
-			//}
-			//for (int i = 0; i < tab.getBb().Count; i++)
-			//{
-			//	if (tab.getBb()[i].isMovimentPadron(linha, coluna, tab, 1))
-			//	{
-			//		return true;
-			//	}
-			//}
-			//for (int i = 0; i < tab.getTb().Count; i++)
-			//{
-			//	if (tab.getTb()[i].IsMovimentPadron(linha, coluna, tab, 1))
-			//	{
-			//		return true;
-			//	}
-			//}
-			//for (int i = 0; i < tab.getDb().Count; i++)
-			//{
-			//	if (tab.getDb()[i].isMovimentPadron(linha, coluna, tab))
-			//	{
-			//		return true;
-			//	}
-			//}
-		}
+            for (int i = 0; i < tab.getCb().Count; i++)
+            {
+                if (tab.getCb()[i].isCheckRei(linha, coluna))
+                {
+                    return true;
+                }
+            }
+            for (int i = 0; i < tab.getBb().Count; i++)
+            {
+                if (tab.getBb()[i].isMovimentPadron(linha, coluna, tab, 1))
+                {
+                    return true;
+                }
+            }
+            for (int i = 0; i < tab.getTb().Count; i++)
+            {
+                if (tab.getTb()[i].IsMovimentPadron(linha, coluna, tab, 1))
+                {
+                    return true;
+                }
+            }
+            for (int i = 0; i < tab.getDb().Count; i++)
+            {
+                if (tab.getDb()[i].isMovimentPadron(linha, coluna, tab))
+                {
+                    return true;
+                }
+            }
+        }
 		return false;
 	}
 
@@ -294,35 +294,35 @@ public class Rei
 						return true;
 					}
 				}
-				//for (int i = 0; i < t.getCb().Count; i++)
-				//{
-				//	if (t.getCb()[i].AllMovimentPossible(t))
-				//	{
-				//		return true;
-				//	}
-				//}
-				//for (int i = 0; i < t.getBb().Count; i++)
-				//{
-				//	if (t.getBb()[i].AllMovimentPossible(t))
-				//	{
-				//		return true;
-				//	}
-				//}
-				//for (int i = 0; i < t.getTb().Count; i++)
-				//{
-				//	if (t.getTb()[i].AllMovimentPossible(t))
-				//	{
-				//		return true;
-				//	}
-				//}
-				//for (int i = 0; i < t.getDb().Count; i++)
-				//{
-				//	if (t.getDb()[i].AllMovimentPossible(t))
-				//	{
-				//		return true;
-				//	}
-				//}
-			}
+                for (int i = 0; i < t.getCb().Count; i++)
+                {
+                    if (t.getCb()[i].AllMovimentPossible(t))
+                    {
+                        return true;
+                    }
+                }
+                for (int i = 0; i < t.getBb().Count; i++)
+                {
+                    if (t.getBb()[i].AllMovimentPossible(t))
+                    {
+                        return true;
+                    }
+                }
+                for (int i = 0; i < t.getTb().Count; i++)
+                {
+                    if (t.getTb()[i].AllMovimentPossible(t))
+                    {
+                        return true;
+                    }
+                }
+                for (int i = 0; i < t.getDb().Count; i++)
+                {
+                    if (t.getDb()[i].AllMovimentPossible(t))
+                    {
+                        return true;
+                    }
+                }
+            }
 			else
 			{
 				for (int i = 0; i < t.getPp().Count; i++)
@@ -332,35 +332,35 @@ public class Rei
 						return true;
 					}
 				}
-				//for (int i = 0; i < t.getCp().Count; i++)
-				//{
-				//	if (t.getCp()[i].AllMovimentPossible(t))
-				//	{
-				//		return true;
-				//	}
-				//}
-				//for (int i = 0; i < t.getBp().Count; i++)
-				//{
-				//	if (t.getBp()[i].AllMovimentPossible(t))
-				//	{
-				//		return true;
-				//	}
-				//}
-				//for (int i = 0; i < t.getTp().Count; i++)
-				//{
-				//	if (t.getTp()[i].AllMovimentPossible(t))
-				//	{
-				//		return true;
-				//	}
-				//}
-				//for (int i = 0; i < t.getDp().Count; i++)
-				//{
-				//	if (t.getDp()[i].AllMovimentPossible(t))
-				//	{
-				//		return true;
-				//	}
-				//}
-			}
+                for (int i = 0; i < t.getCp().Count; i++)
+                {
+                    if (t.getCp()[i].AllMovimentPossible(t))
+                    {
+                        return true;
+                    }
+                }
+                for (int i = 0; i < t.getBp().Count; i++)
+                {
+                    if (t.getBp()[i].AllMovimentPossible(t))
+                    {
+                        return true;
+                    }
+                }
+                for (int i = 0; i < t.getTp().Count; i++)
+                {
+                    if (t.getTp()[i].AllMovimentPossible(t))
+                    {
+                        return true;
+                    }
+                }
+                for (int i = 0; i < t.getDp().Count; i++)
+                {
+                    if (t.getDp()[i].AllMovimentPossible(t))
+                    {
+                        return true;
+                    }
+                }
+            }
 		}
 		return false;
 	}
