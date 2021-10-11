@@ -1340,10 +1340,10 @@ MonoBehaviour:
   damaBranco: {fileID: 21300000, guid: 9c05cfe7fe4c7d64b94a621da7a58488, type: 3}
   reiBranco: {fileID: 21300000, guid: 9eb062e6bfd9555439eb3ff7de4b9d4e, type: 3}
   peaoPreto: {fileID: 21300000, guid: 121127e38689e6548ae88ffdff06e1bb, type: 3}
-  cavaloPreto: {fileID: 0}
-  bispoPreto: {fileID: 0}
-  torrePreto: {fileID: 0}
-  damaPreto: {fileID: 0}
+  cavaloPreto: {fileID: 21300000, guid: ef45b0661a7363e429499521da4bbb55, type: 3}
+  bispoPreto: {fileID: 21300000, guid: 1bfeb60419c329d46b49c93e6707b9a8, type: 3}
+  torrePreto: {fileID: 21300000, guid: 3ea6dc76e00dcf848b7143396302e624, type: 3}
+  damaPreto: {fileID: 21300000, guid: 62ea0bba555922246a72b4c21f73a909, type: 3}
   reiPreto: {fileID: 21300000, guid: 6171d4ad3da55164eb63dba574eaaf23, type: 3}
   LxC: {fileID: 1071805545}
   imageSelect: {fileID: 1900037602}
