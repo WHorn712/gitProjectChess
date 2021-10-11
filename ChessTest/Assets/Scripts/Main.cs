@@ -15,6 +15,8 @@ public class Main : MonoBehaviour
     private int count;
     private int vez;
 
+    private bool isRoque;
+
     private Tabuleiro tab;
 
     [SerializeField]
@@ -50,6 +52,7 @@ public class Main : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isRoque = false;
         count = 0;
         vez = 0;
         isSelect = false;
@@ -59,7 +62,10 @@ public class Main : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            tab.Imprex();
+        }
     }
     void OnMouseDown()
     {
@@ -123,6 +129,10 @@ public class Main : MonoBehaviour
     {
         int b = vez;
         int a = tab.getPositionPecaId(ld,cd);
+        if((lo==0&&ld==0&&co==4&&(cd==6||cd==2))||(lo==7&&ld==7&&co==4&&(cd==6||cd==2)))
+        {
+            isRoque = true;
+        }
         bool ok = false;
         if (tab.EnPassant)
         {
@@ -135,7 +145,15 @@ public class Main : MonoBehaviour
             {
                 if(i==cd && c==ld)
                 {
-                    ChangeImagePos(a, LxC.transform.GetChild(i).transform.GetChild(c).gameObject);
+                    if (isRoque)
+                    {
+                        isRoque = false;
+                        ChangeImagePosRoque(cd,co);
+                    }
+                    else
+                    {
+                        ChangeImagePos(a, LxC.transform.GetChild(i).transform.GetChild(c).gameObject);
+                    }
                 }
                 if(i==co && c==lo)
                 {
@@ -146,6 +164,61 @@ public class Main : MonoBehaviour
                     LxC.transform.GetChild(i).transform.GetChild(c).GetComponent<Image>().color = new Color(1, 1, 1, 0);
                 }
             }
+        }
+    }
+
+    private void ChangeImagePosRoque(int cd,int co)
+    {
+        if(vez==0)
+        {
+            if(cd>co)
+            {
+                LxC.transform.GetChild(4).transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                LxC.transform.GetChild(7).transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                LxC.transform.GetChild(6).transform.GetChild(0).GetComponent<Image>().sprite = reiBranco;
+                LxC.transform.GetChild(6).transform.GetChild(0).GetComponent<Image>().color = new Color(1,1,1,1);
+                LxC.transform.GetChild(5).transform.GetChild(0).GetComponent<Image>().sprite = torreBranco;
+                LxC.transform.GetChild(5).transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            }
+            else
+            {
+                LxC.transform.GetChild(4).transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                LxC.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                LxC.transform.GetChild(2).transform.GetChild(0).GetComponent<Image>().sprite = reiBranco;
+                LxC.transform.GetChild(2).transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(3).transform.GetChild(0).GetComponent<Image>().sprite = torreBranco;
+                LxC.transform.GetChild(3).transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            }
+        }
+        else
+        {
+            if (cd > co)
+            {
+                LxC.transform.GetChild(4).transform.GetChild(7).GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                LxC.transform.GetChild(7).transform.GetChild(7).GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                LxC.transform.GetChild(6).transform.GetChild(7).GetComponent<Image>().sprite = reiPreto;
+                LxC.transform.GetChild(6).transform.GetChild(7).GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(5).transform.GetChild(7).GetComponent<Image>().sprite = torrePreto;
+                LxC.transform.GetChild(5).transform.GetChild(7).GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            }
+            else
+            {
+                LxC.transform.GetChild(4).transform.GetChild(7).GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                LxC.transform.GetChild(0).transform.GetChild(7).GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                LxC.transform.GetChild(2).transform.GetChild(7).GetComponent<Image>().sprite = reiPreto;
+                LxC.transform.GetChild(2).transform.GetChild(7).GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(3).transform.GetChild(7).GetComponent<Image>().sprite = torrePreto;
+                LxC.transform.GetChild(3).transform.GetChild(7).GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            }
+        }
+        count++;
+        if (count % 2 == 0)
+        {
+            vez = 0;
+        }
+        else
+        {
+            vez = 1;
         }
     }
 
@@ -196,6 +269,10 @@ public class Main : MonoBehaviour
             case 10:
                 go.GetComponent<Image>().sprite = reiBranco;
                 go.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                if(isRoque)
+                {
+
+                }
                 break;
             case 11:
                 go.GetComponent<Image>().sprite = reiPreto;

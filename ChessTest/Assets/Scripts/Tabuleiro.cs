@@ -867,15 +867,7 @@ public class Tabuleiro
                 }
                 else
                 {
-                    int c2 = 3;
-                    if (cor == 0)
-                    {
-                        c2 = 1;
-                    }
-                    else
-                    {
-                        c2 = 0;
-                    }
+                    
                     bool ok = ToMove(lin, col, cor, l, c);
                     if (reiBranco.isCheck(this) || reiPreto.isCheck(this))
                     {
@@ -1195,5 +1187,87 @@ public class Tabuleiro
             return true;
         }
         return false;
+    }
+
+    public void Imprex()
+    {
+        Debug.Log("BRANCO");
+        Debug.Log("PEAO");
+        for (int i = 0; i < pb.Count; i++)
+        {
+            Debug.Log(pb[i].Linha() + "" + pb[i].Coluna());
+            Debug.Log(" ");
+        }
+        Debug.Log("");
+        Debug.Log("CAVALO");
+        for (int i = 0; i < cb.Count; i++)
+        {
+            Debug.Log(cb[i].getLinha() + "" + cb[i].getColuna());
+            Debug.Log(" ");
+        }
+        Debug.Log("");
+        Debug.Log("BISPO");
+        for (int i = 0; i < bb.Count; i++)
+        {
+            Debug.Log(bb[i].getLinha() + "" + bb[i].getColuna());
+            Debug.Log(" ");
+        }
+        Debug.Log("");
+        Debug.Log("TORRE");
+        for (int i = 0; i < tb.Count; i++)
+        {
+            Debug.Log(tb[i].getLinha() + "" + tb[i].getColuna());
+            Debug.Log(" ");
+        }
+        Debug.Log("");
+        Debug.Log("DAMA");
+        for (int i = 0; i < db.Count; i++)
+        {
+            Debug.Log(db[i].getLinha() + "" + db[i].getColuna());
+            Debug.Log(" ");
+        }
+        Debug.Log("REI BRANCO " + reiBranco.getLinha() + "" + reiBranco.getColuna());
+        Debug.Log("");
+
+        Debug.Log("");
+
+        Debug.Log("PRETO");
+        Debug.Log("PEAO");
+        for (int i = 0; i < pp.Count; i++)
+        {
+            Debug.Log(pp[i].Linha() + "" + pp[i].Coluna());
+            Debug.Log(" ");
+        }
+        Debug.Log("");
+        Debug.Log("CAVALO");
+        for (int i = 0; i < cp.Count; i++)
+        {
+            Debug.Log(cp[i].getLinha() + "" + cp[i].getColuna());
+            Debug.Log(" ");
+        }
+        Debug.Log("");
+        Debug.Log("BISPO");
+        for (int i = 0; i < bp.Count; i++)
+        {
+            Debug.Log(bp[i].getLinha() + "" + bp[i].getColuna());
+            Debug.Log(" ");
+        }
+        Debug.Log("");
+        Debug.Log("TORRE");
+        for (int i = 0; i < tp.Count; i++)
+        {
+            Debug.Log(tp[i].getLinha() + "" + tp[i].getColuna());
+            Debug.Log(" ");
+        }
+        Debug.Log("");
+        Debug.Log("DAMA");
+        for (int i = 0; i < dp.Count; i++)
+        {
+            Debug.Log(dp[i].getLinha() + "" + dp[i].getColuna());
+            Debug.Log(" ");
+        }
+        Debug.Log("REI Preto " + reiPreto.getLinha() + "" + reiPreto.getColuna());
+        Debug.Log("");
+        Debug.Log(sit);
     }
 }

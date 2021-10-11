@@ -296,6 +296,30 @@ public class Bispo
 		return false;
 	}
 
+	private void SendSinalDama(Tabuleiro t)
+    {
+		if(cor==0)
+        {
+			for(int i=0;i<t.getDb().Count;i++)
+            {
+				if(t.getDb()[i].SendBt)
+                {
+					t.getDb()[i].IsPermitid = true;
+                }
+            }
+        }
+		else
+        {
+			for (int i = 0; i < t.getDp().Count; i++)
+			{
+				if (t.getDp()[i].SendBt)
+				{
+					t.getDp()[i].IsPermitid = true;
+				}
+			}
+		}
+    }
+
 	private bool IsFreeCaminho(int lin, int col, int type, Tabuleiro tab)
 	{
 		int x = linha;
@@ -313,6 +337,7 @@ public class Bispo
 						coluna = col;
 						if (AnalizeReiCheck(x, b, tab) == false)
 						{
+							SendSinalDama(tab);
 							return false;
 						}
 						return true;
@@ -334,6 +359,7 @@ public class Bispo
 								coluna = col;
 								if (AnalizeReiCheck(x, b, tab) == false)
 								{
+									SendSinalDama(tab);
 									tab.ReecolockPeca(lin, col);
 									return false;
 								}
@@ -352,6 +378,7 @@ public class Bispo
 								coluna = col;
 								if (AnalizeReiCheck(x, b, tab) == false)
 								{
+									SendSinalDama(tab);
 									tab.ReecolockPeca(lin, col);
 									return false;
 								}
@@ -383,6 +410,7 @@ public class Bispo
 						coluna = col;
 						if (AnalizeReiCheck(x, b, tab) == false)
 						{
+							SendSinalDama(tab);
 							return false;
 						}
 						return true;
@@ -404,6 +432,7 @@ public class Bispo
 								coluna = col;
 								if (AnalizeReiCheck(x, b, tab) == false)
 								{
+									SendSinalDama(tab);
 									tab.ReecolockPeca(lin, col);
 									return false;
 								}
@@ -422,6 +451,7 @@ public class Bispo
 								coluna = col;
 								if (AnalizeReiCheck(x, b, tab) == false)
 								{
+									SendSinalDama(tab);
 									tab.ReecolockPeca(lin, col);
 									return false;
 								}
@@ -452,6 +482,7 @@ public class Bispo
 						coluna = col;
 						if (AnalizeReiCheck(x, b, tab) == false)
 						{
+							SendSinalDama(tab);
 							return false;
 						}
 						return true;
@@ -473,6 +504,7 @@ public class Bispo
 								coluna = col;
 								if (AnalizeReiCheck(x, b, tab) == false)
 								{
+									SendSinalDama(tab);
 									tab.ReecolockPeca(lin, col);
 									return false;
 								}
@@ -491,6 +523,7 @@ public class Bispo
 								coluna = col;
 								if (AnalizeReiCheck(x, b, tab) == false)
 								{
+									SendSinalDama(tab);
 									tab.ReecolockPeca(lin, col);
 									return false;
 								}
@@ -515,12 +548,16 @@ public class Bispo
 			{
 				if (tab.PositionisEmpty(linha - a, coluna + a))
 				{
+					Debug.Log("bispo analise");
 					if (linha - a == lin && coluna + a == col)
 					{
+						Debug.Log("bispo analise 2");
 						linha = lin;
 						coluna = col;
 						if (AnalizeReiCheck(x, b, tab) == false)
 						{
+							SendSinalDama(tab);
+							Debug.Log("bispo analise 3");
 							return false;
 						}
 						return true;
@@ -542,6 +579,7 @@ public class Bispo
 								coluna = col;
 								if (AnalizeReiCheck(x, b, tab) == false)
 								{
+									SendSinalDama(tab);
 									tab.ReecolockPeca(lin, col);
 									return false;
 								}
@@ -560,6 +598,7 @@ public class Bispo
 								coluna = col;
 								if (AnalizeReiCheck(x, b, tab) == false)
 								{
+									SendSinalDama(tab);
 									tab.ReecolockPeca(lin, col);
 									return false;
 								}

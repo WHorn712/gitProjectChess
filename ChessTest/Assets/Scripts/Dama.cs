@@ -8,12 +8,39 @@ public class Dama
 	private int linha;
 	private int coluna;
 
+	private bool sendBT;
+	private bool isPermitidReiCheck;
+
 	public Dama(int c, int lin, int col)
 	{
 		cor = c;
 		linha = lin;
 		coluna = col;
+		sendBT = false;
+		isPermitidReiCheck = false;
 	}
+	public bool SendBt
+    {
+		get
+        {
+			return sendBT;
+        }
+		set
+        {
+			sendBT = value;
+        }
+    }
+	public bool IsPermitid
+    {
+		get
+        {
+			return isPermitidReiCheck;
+        }
+		set
+        {
+			isPermitidReiCheck = value;
+        }
+    }
 
 	public void setLinha(int l)
 	{
@@ -280,20 +307,42 @@ public class Dama
 	{
 		Torre t = new Torre(cor, linha, coluna);
 		Bispo b = new Bispo(cor, linha, coluna);
+		sendBT = true;
 		if (t.IsMove(lin, col, tab))
 		{
+			sendBT = false;
 			linha = lin;
 			coluna = col;
 			return true;
 		}
 		else if (b.IsMove(lin, col, tab))
 		{
+			sendBT = false;
 			linha = lin;
 			coluna = col;
 			return true;
 		}
 		else
 		{
+			sendBT = false;
+			if(isPermitidReiCheck)
+            {
+				Debug.Log("ENTROU");
+				isPermitidReiCheck = false;
+				if(cor==0)
+                {
+					tab.PositionisEmptyPreto(lin, col, 1);
+					linha = lin;
+					coluna = col;
+                }
+				else
+                {
+					tab.PositionisEmptyBranco(lin, col, 1);
+					linha = lin;
+					coluna = col;
+				}
+				return true;
+            }
 			return false;
 		}
 	}
