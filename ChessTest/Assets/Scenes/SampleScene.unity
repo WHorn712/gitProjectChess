@@ -694,7 +694,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9eb062e6bfd9555439eb3ff7de4b9d4e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d368d221cd81b7d4796fc5f39c897bf9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1338,7 +1338,7 @@ MonoBehaviour:
   bispoBranco: {fileID: 21300000, guid: 83e54986c246a4843826579d8763e237, type: 3}
   torreBranco: {fileID: 21300000, guid: ca55fb8407c688740a78f0429a5c0690, type: 3}
   damaBranco: {fileID: 21300000, guid: 9c05cfe7fe4c7d64b94a621da7a58488, type: 3}
-  reiBranco: {fileID: 21300000, guid: 9eb062e6bfd9555439eb3ff7de4b9d4e, type: 3}
+  reiBranco: {fileID: 21300000, guid: d368d221cd81b7d4796fc5f39c897bf9, type: 3}
   peaoPreto: {fileID: 21300000, guid: 121127e38689e6548ae88ffdff06e1bb, type: 3}
   cavaloPreto: {fileID: 21300000, guid: ef45b0661a7363e429499521da4bbb55, type: 3}
   bispoPreto: {fileID: 21300000, guid: 1bfeb60419c329d46b49c93e6707b9a8, type: 3}
@@ -1347,7 +1347,6 @@ MonoBehaviour:
   reiPreto: {fileID: 21300000, guid: 6171d4ad3da55164eb63dba574eaaf23, type: 3}
   LxC: {fileID: 1071805545}
   imageSelect: {fileID: 1900037602}
-  corridas: 10000
 --- !u!1 &186308290
 GameObject:
   m_ObjectHideFlags: 0

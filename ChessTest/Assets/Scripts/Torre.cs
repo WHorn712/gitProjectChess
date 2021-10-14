@@ -225,42 +225,44 @@ public class Torre
 		int y=0;
 		bool ok=true;
 		bool x=true;
-		while(x)
+		while(x||y<=7)
 		{
 			y++;
 			int a = linha+l;
 			int b=coluna+c;
-			if(t.PositionisEmpty(a, b))
+			if (!CheckPossible(a, b))
 			{
-				ok=AnalizeCheckRei(a,b,r,t);
+				x = false;
 			}
 			else
 			{
-				if(cor==0)
+				if (t.PositionisEmpty(a, b))
 				{
-					if(t.PositionisEmptyPreto(a, b, 1)==false)
-					{
-						ok=AnalizeCheckRei(a,b,r,t);
-						t.ReecolockPeca(a, b);
-					}
+					ok = AnalizeCheckRei(a, b, r, t);
 				}
 				else
 				{
-					if(t.PositionisEmptyBranco(a, b, 1)==false)
+					if (cor == 0)
 					{
-						ok=AnalizeCheckRei(a,b,r,t);
-						t.ReecolockPeca(a, b);
+						if (t.PositionisEmptyPreto(a, b, 1) == false)
+						{
+							ok = AnalizeCheckRei(a, b, r, t);
+							t.ReecolockPeca(a, b);
+						}
+					}
+					else
+					{
+						if (t.PositionisEmptyBranco(a, b, 1) == false)
+						{
+							ok = AnalizeCheckRei(a, b, r, t);
+							t.ReecolockPeca(a, b);
+						}
 					}
 				}
-				y=7;
-			}
-			if(ok)
-			{
-				x=false;
-			}
-			else if(ok==false && y==7)
-			{
-				x=false;
+				if (!ok)
+				{
+					x = false;
+				}
 			}
 		}
 		linha=c2;
