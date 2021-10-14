@@ -49,9 +49,12 @@ public class Main : MonoBehaviour
     [SerializeField]
     private GameObject imageSelect;
 
+    private string jogadas;
+
     // Start is called before the first frame update
     void Start()
     {
+        jogadas = "";
         isRoque = false;
         count = 0;
         vez = 0;
@@ -65,6 +68,10 @@ public class Main : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.A))
         {
             tab.Imprex();
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Debug.Log(jogadas);
         }
     }
     void OnMouseDown()
@@ -96,20 +103,34 @@ public class Main : MonoBehaviour
             if (ab)
             {
                 Debug.Log(linOr+"."+colOr+"  /  "+linDes+"."+colDes);
+                jogadas += linOr + "." + colOr + "." + linDes + "." + colDes + " / ";
                 ToMakeLance(linOr, colOr, linDes, colDes);
                 if(c==0)
                 {
                     if(tab.getReiPreto().isCheck(tab))
                     {
-                        
+                        if(tab.isCheckMateReiEndGame(c))
+                        {
+                            Debug.Log("CHECK MATE. BRANCO VENCEU");
+                            tab.IsEnd = true;
+                        }
                     }
                 }
                 else if(c==1)
                 {
                     if(tab.getReiBranco().isCheck(tab))
                     {
-
+                        if (tab.isCheckMateReiEndGame(c))
+                        {
+                            Debug.Log("CHECK MATE. PRETO VENCEU");
+                            tab.IsEnd = true;
+                        }
                     }
+                }
+                if(tab.isAfogamento(c))
+                {
+                    Debug.Log("EMPATE POR AFOGAMENTO");
+                    tab.IsEnd = true;
                 }
             }
         }

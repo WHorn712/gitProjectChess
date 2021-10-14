@@ -384,39 +384,39 @@ public class Rei
 			{
 				if (cor == 0)
 				{
-					//if (t.PositionisEmpty(linha, coluna + 1) && t.PositionisEmpty(linha, coluna + 2) && t.getTb()[1].isPosition(0, 7))
-					//{
-					//	toMakeMovimentRoque(linha, coluna + 2, 0, t.getTb()[1].getColuna() - 2, 1, t);
-					//	return true;
-					//}
-				}
+                    if (t.PositionisEmpty(linha, coluna + 1) && t.PositionisEmpty(linha, coluna + 2) && t.getTb()[1].isPosition(0, 7))
+                    {
+                        toMakeMovimentRoque(linha, coluna + 2, 0, t.getTb()[1].getColuna() - 2, 1, t);
+                        return true;
+                    }
+                }
 				else
 				{
-					//if (t.PositionisEmpty(linha, coluna + 1) && t.PositionisEmpty(linha, coluna + 2) && t.getTp()[1].isPosition(7, 7))
-					//{
-					//	toMakeMovimentRoque(linha, coluna + 2, 7, t.getTp()[1].getColuna() - 2, 1, t);
-					//	return true;
-					//}
-				}
-			}
-			else
-			{
-				if (cor == 0)
-				{
-					//if (t.PositionisEmpty(linha, coluna - 1) && t.PositionisEmpty(linha, coluna - 2) && t.getTb()[0].isPosition(0, 0) && t.PositionisEmpty(linha, coluna - 3))
-					//{
-					//	toMakeMovimentRoque(linha, coluna - 2, 0, t.getTb()[0].getColuna() + 3, 0, t);
-					//	return true;
-					//}
-				}
-				else
-				{
-					//if (t.PositionisEmpty(linha, coluna - 1) && t.PositionisEmpty(linha, coluna - 2) && t.getTp()[0].isPosition(7, 0) && t.PositionisEmpty(linha, coluna - 3))
-					//{
-					//	toMakeMovimentRoque(linha, coluna - 2, 7, t.getTp()[0].getColuna() + 3, 0, t);
-					//	return true;
-					//}
-				}
+                    if (t.PositionisEmpty(linha, coluna + 1) && t.PositionisEmpty(linha, coluna + 2) && t.getTp()[1].isPosition(7, 7))
+                    {
+                        toMakeMovimentRoque(linha, coluna + 2, 7, t.getTp()[1].getColuna() - 2, 1, t);
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                if (cor == 0)
+                {
+                    if (t.PositionisEmpty(linha, coluna - 1) && t.PositionisEmpty(linha, coluna - 2) && t.getTb()[0].isPosition(0, 0) && t.PositionisEmpty(linha, coluna - 3))
+                    {
+                        toMakeMovimentRoque(linha, coluna - 2, 0, t.getTb()[0].getColuna() + 3, 0, t);
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (t.PositionisEmpty(linha, coluna - 1) && t.PositionisEmpty(linha, coluna - 2) && t.getTp()[0].isPosition(7, 0) && t.PositionisEmpty(linha, coluna - 3))
+                    {
+                        toMakeMovimentRoque(linha, coluna - 2, 7, t.getTp()[0].getColuna() + 3, 0, t);
+                        return true;
+                    }
+                }
 			}
 		}
 		return false;
@@ -426,17 +426,17 @@ public class Rei
 	{
 		linha = l;
 		coluna = c;
-		//if (cor == 0)
-		//{
-		//	t.getTb()[index].setLinha(lt);
-		//	t.getTb()[index].setColuna(ct);
-		//}
-		//else
-		//{
-		//	t.getTp()[index].setLinha(lt);
-		//	t.getTp()[index].setColuna(ct);
-		//}
-	}
+        if (cor == 0)
+        {
+            t.getTb()[index].setLinha(lt);
+            t.getTb()[index].setColuna(ct);
+        }
+        else
+        {
+            t.getTp()[index].setLinha(lt);
+            t.getTp()[index].setColuna(ct);
+        }
+    }
 
 	private bool AnalizeIsRoque(Tabuleiro t, int roq)
 	{
@@ -786,24 +786,24 @@ public class Rei
 	{
 		if (cor == 0)
 		{
-			//for (int i = 0; i < t.getCp().Count; i++)
-			//{
-			//	if (t.getCp()[i].isPosition(l, c))
-			//	{
-			//		return true;
-			//	}
-			//}
-		}
+            for (int i = 0; i < t.getCp().Count; i++)
+            {
+                if (t.getCp()[i].isPosition(l, c))
+                {
+                    return true;
+                }
+            }
+        }
 		else
 		{
-			//for (int i = 0; i < t.getCb().Count; i++)
-			//{
-			//	if (t.getCb()[i].isPosition(l, c))
-			//	{
-			//		return true;
-			//	}
-			//}
-		}
+            for (int i = 0; i < t.getCb().Count; i++)
+            {
+                if (t.getCb()[i].isPosition(l, c))
+                {
+                    return true;
+                }
+            }
+        }
 		return false;
 	}
 
@@ -868,14 +868,14 @@ public class Rei
 						}
 					}
 				}
-				//for (int i = 0; i < t.getBp().Count; i++)
-				//{
-				//	if (t.getBp()[i].isPosition(l, c))
-				//	{
-				//		return true;
-				//	}
-				//}
-			}
+                for (int i = 0; i < t.getBp().Count; i++)
+                {
+                    if (t.getBp()[i].isPosition(l, c))
+                    {
+                        return true;
+                    }
+                }
+            }
 			else
 			{
 				if (z == 0)
@@ -888,58 +888,58 @@ public class Rei
 						}
 					}
 				}
-				//for (int i = 0; i < t.getBb().Count; i++)
-				//{
-				//	if (t.getBb()[i].isPosition(l, c))
-				//	{
-				//		return true;
-				//	}
-				//}
-			}
-		}
-		else if (type == 2 || type == 5)
-		{
-			if (cor == 0)
-			{
-				//for (int i = 0; i < t.getTp().Count; i++)
-				//{
-				//	if (t.getTp()[i].isPosition(l, c))
-				//	{
-				//		return true;
-				//	}
-				//}
-			}
-			else
-			{
-				//for (int i = 0; i < t.getTb().Count; i++)
-				//{
-				//	if (t.getTb()[i].isPosition(l, c))
-				//	{
-				//		return true;
-				//	}
-				//}
-			}
-		}
-		if (cor == 0)
-		{
-			//for (int i = 0; i < t.getDp().Count; i++)
-			//{
-			//	if (t.getDp()[i].isPosition(l, c))
-			//	{
-			//		return true;
-			//	}
-			//}
-		}
-		else
-		{
-			//for (int i = 0; i < t.getDb().Count; i++)
-			//{
-			//	if (t.getDb()[i].isPosition(l, c))
-			//	{
-			//		return true;
-			//	}
-			//}
-		}
+                for (int i = 0; i < t.getBb().Count; i++)
+                {
+                    if (t.getBb()[i].isPosition(l, c))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        else if (type == 2 || type == 5)
+        {
+            if (cor == 0)
+            {
+                for (int i = 0; i < t.getTp().Count; i++)
+                {
+                    if (t.getTp()[i].isPosition(l, c))
+                    {
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < t.getTb().Count; i++)
+                {
+                    if (t.getTb()[i].isPosition(l, c))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        if (cor == 0)
+        {
+            for (int i = 0; i < t.getDp().Count; i++)
+            {
+                if (t.getDp()[i].isPosition(l, c))
+                {
+                    return true;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < t.getDb().Count; i++)
+            {
+                if (t.getDb()[i].isPosition(l, c))
+                {
+                    return true;
+                }
+            }
+        }
 		return false;
 	}
 

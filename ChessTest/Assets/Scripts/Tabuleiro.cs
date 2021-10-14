@@ -10,6 +10,7 @@ public class Tabuleiro
     private int indexDesmove;
     private string sit;
     private bool enPassant;
+    private bool isEnd;
 
     //PEÇAS BRANCAS
     private List<Peao> pb;
@@ -29,6 +30,7 @@ public class Tabuleiro
 
     public Tabuleiro()
     {
+        isEnd = false;
         enPassant = false;
         sit = "";
         indexDesmove = -1;
@@ -68,6 +70,17 @@ public class Tabuleiro
         dp = tab.getDp();
         reiBranco = tab.getReiBranco();
         reiPreto = tab.getReiPreto();
+    }
+    public bool IsEnd
+    {
+        get
+        {
+            return isEnd;
+        }
+        set
+        {
+            isEnd = value;
+        }
     }
     public bool EnPassant
     {
@@ -826,7 +839,7 @@ public class Tabuleiro
             if (reiPreto.isCheckMate(this) == false)
             {
                 sit = "CHECK MATE. BRANCO VENCEU";
-                return false;
+                return true;
             }
         }
         else
@@ -834,15 +847,19 @@ public class Tabuleiro
             if (reiBranco.isCheckMate(this) == false)
             {
                 sit = "CHECK MATE. PRETO VENCEU";
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     //lin E col == POSIÇÃO DE ORIGEM // l E c == POSIÇÃO DE DESTINO
     public bool isMove(int lin, int col, int cor, int l, int c)
     {
+        if(isEnd)
+        {
+            return false;
+        }
         if (isPosition(lin, col))
         {
             if (reiBranco.isCheck(this) || reiPreto.isCheck(this))
