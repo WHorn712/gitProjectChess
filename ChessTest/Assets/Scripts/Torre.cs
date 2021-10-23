@@ -178,12 +178,12 @@ public class Torre
 
 	private bool AnalizeCheckRei(int a, int b, Rei r, Tabuleiro t)
 	{
-		bool ok = false;
+		bool ok = true;
 		linha = a;
 		coluna = b;
 		if (r.isCheck(t))
 		{
-			ok = true;
+			ok = false;
 		}
 		return ok;
 	}
@@ -222,52 +222,55 @@ public class Torre
 		{
 			r=t.getReiPreto();
 		}
-		int y=0;
 		bool ok=true;
-		bool x=true;
-		while(x||y<=7)
+		int y = 0;
+		bool x = true;
+		while (x)
 		{
 			y++;
-			int a = linha+l;
-			int b=coluna+c;
-			if (!CheckPossible(a, b))
+			int a = linha + l;
+			int b = coluna + c;
+			if (CheckPossible(a, b) == false)
 			{
+				ok = true;
 				x = false;
+			}
+			else if (t.PositionisEmpty(a, b))
+			{
+				ok = AnalizeCheckRei(a, b, r, t);
 			}
 			else
 			{
-				if (t.PositionisEmpty(a, b))
+				if (cor == 0)
 				{
-					ok = AnalizeCheckRei(a, b, r, t);
+					if (t.PositionisEmptyPreto(a, b, 1) == false)
+					{
+						ok = AnalizeCheckRei(a, b, r, t);
+						t.ReecolockPeca(a, b);
+					}
 				}
 				else
 				{
-					if (cor == 0)
+					if (t.PositionisEmptyBranco(a, b, 1) == false)
 					{
-						if (t.PositionisEmptyPreto(a, b, 1) == false)
-						{
-							ok = AnalizeCheckRei(a, b, r, t);
-							t.ReecolockPeca(a, b);
-						}
-					}
-					else
-					{
-						if (t.PositionisEmptyBranco(a, b, 1) == false)
-						{
-							ok = AnalizeCheckRei(a, b, r, t);
-							t.ReecolockPeca(a, b);
-						}
+						ok = AnalizeCheckRei(a, b, r, t);
+						t.ReecolockPeca(a, b);
 					}
 				}
-				if (!ok)
-				{
-					x = false;
-				}
+				y = 7;
+			}
+			if (ok)
+			{
+				x = false;
+			}
+			else if (y == 7)
+			{
+				x = false;
 			}
 		}
-		linha=c2;
+		linha =c2;
 		coluna=d;
-		return ok;
+		return !ok;
 	}
 
 	private bool GetAnalizePositionCheckRei(int lin, int col, int a, int b, Tabuleiro t)
