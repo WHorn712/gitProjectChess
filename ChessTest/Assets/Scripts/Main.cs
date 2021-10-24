@@ -12,13 +12,13 @@ public class Main : MonoBehaviour
 
     private bool isSelect;
 
-    private bool isSelectStart;
     private List<GameObject> Pecas = new List<GameObject>();
     private List<GameObject> Posicoes = new List<GameObject>();
     [SerializeField]
     private GameObject lixeira;
     [SerializeField]
     private GameObject images;
+    private int typeIncert; 
 
     private int count;
     private int vez;
@@ -27,6 +27,7 @@ public class Main : MonoBehaviour
 
     private Tabuleiro tab;
 
+    
     [SerializeField]
     private Sprite peaoBranco;
     [SerializeField]
@@ -67,7 +68,8 @@ public class Main : MonoBehaviour
         count = 0;
         vez = 0;
         isSelect = false;
-        isSelectStart = false;
+        typeIncert = -2;
+        
         tab = new Tabuleiro();
     }
 
@@ -96,40 +98,74 @@ public class Main : MonoBehaviour
 
     public void ClickPositionStart(GameObject go)
     {
-        //int a = go.transform.GetSiblingIndex();
-        //int b = go.transform.parent.GetSiblingIndex();
+
         ////c=0 peaobranco c=1 peaopreto c=2 cavalobranco ...
-        //int c = 0;
-
-        //if(isSelectStart)
-        //{
-        //    isSelectStart = false;
-        //}
-        //else
-        //{
-
-        //}
-        if(go.layer==8)
+        int x = go.transform.GetSiblingIndex();
+        if (go.layer==8)
         {
             Desmark();
             lixeira.GetComponent<Image>().color = new Color(0.92f, 0.87f, 0.63f, 1);
+            typeIncert = -1;
         }
         else if(go.layer==9)
         {
             Desmark();
-            images.transform.parent.GetChild(go.transform.GetSiblingIndex()).gameObject.GetComponent<Image>().color = new Color(0.92f,0.87f,0.63f,1);
+            images.transform.GetChild(x).gameObject.GetComponent<Image>().color = new Color(0.92f,0.87f,0.63f,1);
+            typeIncert = x;
         }
         else if(go.layer==10)
         {
-
+            if (typeIncert > -2)
+            {
+                int l = go.transform.GetSiblingIndex();
+                int c = go.transform.parent.GetSiblingIndex();
+                switch (typeIncert)
+                {
+                    case -1:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = null;
+                        break;
+                    case 0:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = peaoBranco;
+                        break;
+                    case 1:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = peaoPreto;
+                        break;
+                    case 2:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = cavaloBranco;
+                        break;
+                    case 3:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = cavaloPreto;
+                        break;
+                    case 4:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = bispoBranco;
+                        break;
+                    case 5:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = bispoPreto;
+                        break;
+                    case 6:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = torreBranco;
+                        break;
+                    case 7:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = torrePreto;
+                        break;
+                    case 8:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = damaBranco;
+                        break;
+                    case 9:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = damaPreto;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
     private void Desmark()
     {
         lixeira.GetComponent<Image>().color = new Color(0.16f,0.01f,0.01f,1);
-        for(int i=0;i<images.transform.parent.transform.childCount;i++)
+        for(int i=0;i<images.transform.childCount;i++)
         {
-            images.transform.parent.GetChild(0).gameObject.GetComponent<Image>().color = new Color(1,1,1,1);
+            images.transform.GetChild(i).gameObject.GetComponent<Image>().color = new Color(1,1,1,1);
         }
     }
 

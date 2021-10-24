@@ -203,7 +203,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 26199225}
@@ -481,7 +481,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 38563199}
@@ -684,7 +684,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 49711294}
@@ -814,7 +814,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 58440819}
@@ -891,7 +891,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1946353250}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -946,6 +946,7 @@ GameObject:
   - component: {fileID: 84668568}
   - component: {fileID: 84668570}
   - component: {fileID: 84668569}
+  - component: {fileID: 84668571}
   m_Layer: 9
   m_Name: Image (9)
   m_TagString: Untagged
@@ -1010,6 +1011,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84668567}
   m_CullTransparentMesh: 0
+--- !u!114 &84668571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84668567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 84668569}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1993336657}
+        m_MethodName: ClickPositionStart
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 84668567}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &89138365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,7 +1190,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 113473264}
@@ -1264,7 +1319,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 129702568}
@@ -1541,7 +1596,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 186508317}
@@ -1791,6 +1846,7 @@ GameObject:
   - component: {fileID: 237122663}
   - component: {fileID: 237122665}
   - component: {fileID: 237122664}
+  - component: {fileID: 237122666}
   m_Layer: 9
   m_Name: Image (6)
   m_TagString: Untagged
@@ -1810,7 +1866,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1639414497}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1855,6 +1911,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237122662}
   m_CullTransparentMesh: 0
+--- !u!114 &237122666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237122662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 237122664}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1993336657}
+        m_MethodName: ClickPositionStart
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 237122662}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &255224769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2193,7 +2303,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1946353250}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2319,7 +2429,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 350054252}
@@ -2448,7 +2558,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 392093274}
@@ -2728,6 +2838,7 @@ GameObject:
   - component: {fileID: 437713024}
   - component: {fileID: 437713026}
   - component: {fileID: 437713025}
+  - component: {fileID: 437713027}
   m_Layer: 9
   m_Name: Image (4)
   m_TagString: Untagged
@@ -2747,7 +2858,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1639414497}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2791,6 +2902,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437713023}
   m_CullTransparentMesh: 0
+--- !u!114 &437713027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437713023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 437713025}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1993336657}
+        m_MethodName: ClickPositionStart
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 437713023}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &477986666
 GameObject:
   m_ObjectHideFlags: 0
@@ -2873,7 +3038,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 477986666}
@@ -3002,7 +3167,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 515866316}
@@ -3353,7 +3518,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 580267735}
@@ -3482,7 +3647,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 582606573}
@@ -3541,6 +3706,7 @@ GameObject:
   - component: {fileID: 590468136}
   - component: {fileID: 590468138}
   - component: {fileID: 590468137}
+  - component: {fileID: 590468139}
   m_Layer: 9
   m_Name: Image (2)
   m_TagString: Untagged
@@ -3560,7 +3726,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1639414497}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3605,6 +3771,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590468135}
   m_CullTransparentMesh: 0
+--- !u!114 &590468139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590468135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 590468137}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1993336657}
+        m_MethodName: ClickPositionStart
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 590468135}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &620382479
 GameObject:
   m_ObjectHideFlags: 0
@@ -3687,7 +3907,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 620382479}
@@ -3816,7 +4036,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 622318651}
@@ -3894,7 +4114,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1946353250}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4140,6 +4360,7 @@ GameObject:
   - component: {fileID: 652590207}
   - component: {fileID: 652590209}
   - component: {fileID: 652590208}
+  - component: {fileID: 652590210}
   m_Layer: 8
   m_Name: Lixeira
   m_TagString: Untagged
@@ -4203,6 +4424,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652590206}
   m_CullTransparentMesh: 0
+--- !u!114 &652590210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652590206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 652590208}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1993336657}
+        m_MethodName: ClickPositionStart
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 652590206}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &666540002
 GameObject:
   m_ObjectHideFlags: 0
@@ -4433,7 +4708,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 709195387}
@@ -4566,6 +4841,7 @@ GameObject:
   - component: {fileID: 749317572}
   - component: {fileID: 749317574}
   - component: {fileID: 749317573}
+  - component: {fileID: 749317575}
   m_Layer: 9
   m_Name: Image (7)
   m_TagString: Untagged
@@ -4585,7 +4861,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1639414497}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4630,6 +4906,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749317571}
   m_CullTransparentMesh: 0
+--- !u!114 &749317575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749317571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 749317573}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1993336657}
+        m_MethodName: ClickPositionStart
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 749317571}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &758631804
 GameObject:
   m_ObjectHideFlags: 0
@@ -4712,7 +5042,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 758631804}
@@ -4884,7 +5214,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 783042855}
@@ -5344,7 +5674,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 858671128}
@@ -6066,7 +6396,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 931787523}
@@ -6196,7 +6526,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 937725808}
@@ -6326,7 +6656,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 943644851}
@@ -6456,7 +6786,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 944916802}
@@ -6854,7 +7184,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 973488137}
@@ -6983,7 +7313,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 979344137}
@@ -7155,7 +7485,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 999009546}
@@ -7432,7 +7762,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1020125459}
@@ -7635,7 +7965,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1028709534}
@@ -7693,6 +8023,7 @@ GameObject:
   - component: {fileID: 1034879421}
   - component: {fileID: 1034879423}
   - component: {fileID: 1034879422}
+  - component: {fileID: 1034879424}
   m_Layer: 9
   m_Name: Image
   m_TagString: Untagged
@@ -7756,6 +8087,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034879420}
   m_CullTransparentMesh: 0
+--- !u!114 &1034879424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034879420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1034879422}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1993336657}
+        m_MethodName: ClickPositionStart
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1034879420}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1045895809
 GameObject:
   m_ObjectHideFlags: 0
@@ -7786,7 +8171,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1946353250}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7860,7 +8245,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1946353250}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7986,7 +8371,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1058527993}
@@ -8426,6 +8811,7 @@ GameObject:
   - component: {fileID: 1223356862}
   - component: {fileID: 1223356864}
   - component: {fileID: 1223356863}
+  - component: {fileID: 1223356865}
   m_Layer: 9
   m_Name: Image (3)
   m_TagString: Untagged
@@ -8445,7 +8831,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1639414497}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8490,6 +8876,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223356861}
   m_CullTransparentMesh: 0
+--- !u!114 &1223356865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223356861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1223356863}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1993336657}
+        m_MethodName: ClickPositionStart
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1223356861}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1233236632
 GameObject:
   m_ObjectHideFlags: 0
@@ -8572,7 +9012,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1233236632}
@@ -8966,7 +9406,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1288616454}
@@ -9024,6 +9464,7 @@ GameObject:
   - component: {fileID: 1298750017}
   - component: {fileID: 1298750019}
   - component: {fileID: 1298750018}
+  - component: {fileID: 1298750020}
   m_Layer: 9
   m_Name: Image (8)
   m_TagString: Untagged
@@ -9043,7 +9484,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1639414497}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9088,6 +9529,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298750016}
   m_CullTransparentMesh: 0
+--- !u!114 &1298750020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298750016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1298750018}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1993336657}
+        m_MethodName: ClickPositionStart
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1298750016}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1309997253
 GameObject:
   m_ObjectHideFlags: 0
@@ -9170,7 +9665,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1309997253}
@@ -9300,7 +9795,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1312562895}
@@ -9429,7 +9924,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1320509196}
@@ -9558,7 +10053,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1327310140}
@@ -9687,7 +10182,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1337111444}
@@ -9816,7 +10311,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1345211225}
@@ -10057,7 +10552,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1367805737}
@@ -10130,16 +10625,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394438020}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1946353250}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -310, y: -55}
+  m_AnchoredPosition: {x: -310.00003, y: -55}
   m_SizeDelta: {x: 138.4256, y: 48.01248}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1394438022
@@ -10338,6 +10833,7 @@ GameObject:
   - component: {fileID: 1452880064}
   - component: {fileID: 1452880066}
   - component: {fileID: 1452880065}
+  - component: {fileID: 1452880067}
   m_Layer: 9
   m_Name: Image (1)
   m_TagString: Untagged
@@ -10357,7 +10853,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1639414497}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10402,6 +10898,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452880063}
   m_CullTransparentMesh: 0
+--- !u!114 &1452880067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452880063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1452880065}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1993336657}
+        m_MethodName: ClickPositionStart
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1452880063}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1493528583
 GameObject:
   m_ObjectHideFlags: 0
@@ -10432,7 +10982,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1946353250}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10632,7 +11182,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1519149638}
@@ -10933,7 +11483,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1560276304}
@@ -11328,7 +11878,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1599978724}
@@ -11458,7 +12008,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1600525764}
@@ -11630,7 +12180,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1609304577}
@@ -11706,14 +12256,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1034879421}
-  - {fileID: 1452880064}
-  - {fileID: 590468136}
-  - {fileID: 1223356862}
-  - {fileID: 437713024}
   - {fileID: 2060153367}
+  - {fileID: 1452880064}
   - {fileID: 237122663}
+  - {fileID: 590468136}
   - {fileID: 749317572}
+  - {fileID: 1223356862}
   - {fileID: 1298750017}
+  - {fileID: 437713024}
   - {fileID: 84668568}
   m_Father: {fileID: 1351817063}
   m_RootOrder: 2
@@ -11805,7 +12355,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1647100043}
@@ -11934,7 +12484,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1689438889}
@@ -12147,7 +12697,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1727980890}
@@ -12319,7 +12869,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1766041984}
@@ -12716,7 +13266,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1821943218}
@@ -12993,7 +13543,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1850523425}
@@ -13416,7 +13966,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1901198796}
@@ -13620,7 +14170,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1910457947}
@@ -13697,7 +14247,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1946353250}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13823,7 +14373,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1924382734}
@@ -13941,14 +14491,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1448914215}
-  - {fileID: 1045895810}
-  - {fileID: 60160662}
-  - {fileID: 1917683344}
-  - {fileID: 1048226368}
   - {fileID: 345369056}
+  - {fileID: 1045895810}
   - {fileID: 1394438021}
+  - {fileID: 60160662}
   - {fileID: 1493528584}
+  - {fileID: 1917683344}
   - {fileID: 644186493}
+  - {fileID: 1048226368}
   - {fileID: 666540003}
   m_Father: {fileID: 1351817063}
   m_RootOrder: 1
@@ -14040,7 +14590,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1950471247}
@@ -14317,7 +14867,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1960597156}
@@ -14447,7 +14997,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1976279177}
@@ -14525,8 +15075,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747cd0d844a936247af6841bea148437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lixeira: {fileID: 0}
-  images: {fileID: 0}
+  lixeira: {fileID: 652590206}
+  images: {fileID: 1946353249}
   peaoBranco: {fileID: 924579793512136347, guid: 686011049c6363e4594129be18565701,
     type: 3}
   cavaloBranco: {fileID: -7188122615814651181, guid: 686011049c6363e4594129be18565701,
@@ -14797,7 +15347,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2030452767}
@@ -14926,7 +15476,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2032534562}
@@ -15055,7 +15605,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2040176766}
@@ -15185,7 +15735,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2043663944}
@@ -15286,6 +15836,7 @@ GameObject:
   - component: {fileID: 2060153367}
   - component: {fileID: 2060153369}
   - component: {fileID: 2060153368}
+  - component: {fileID: 2060153370}
   m_Layer: 9
   m_Name: Image (5)
   m_TagString: Untagged
@@ -15305,7 +15856,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1639414497}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15350,6 +15901,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060153366}
   m_CullTransparentMesh: 0
+--- !u!114 &2060153370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060153366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2060153368}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1993336657}
+        m_MethodName: ClickPositionStart
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2060153366}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2074163303
 GameObject:
   m_ObjectHideFlags: 0
@@ -15580,7 +16185,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2095953658}
@@ -15709,7 +16314,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2096081000}
@@ -15987,7 +16592,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2134212976}
@@ -16117,7 +16722,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2134987874}
@@ -16247,7 +16852,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1993336657}
-        m_MethodName: ClickPosition
+        m_MethodName: ClickPositionStart
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2143802536}
