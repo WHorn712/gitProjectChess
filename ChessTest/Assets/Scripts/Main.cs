@@ -12,6 +12,14 @@ public class Main : MonoBehaviour
 
     private bool isSelect;
 
+    private bool isSelectStart;
+    private List<GameObject> Pecas = new List<GameObject>();
+    private List<GameObject> Posicoes = new List<GameObject>();
+    [SerializeField]
+    private GameObject lixeira;
+    [SerializeField]
+    private GameObject images;
+
     private int count;
     private int vez;
 
@@ -59,6 +67,7 @@ public class Main : MonoBehaviour
         count = 0;
         vez = 0;
         isSelect = false;
+        isSelectStart = false;
         tab = new Tabuleiro();
     }
 
@@ -84,6 +93,45 @@ public class Main : MonoBehaviour
     }
     
 
+
+    public void ClickPositionStart(GameObject go)
+    {
+        //int a = go.transform.GetSiblingIndex();
+        //int b = go.transform.parent.GetSiblingIndex();
+        ////c=0 peaobranco c=1 peaopreto c=2 cavalobranco ...
+        //int c = 0;
+
+        //if(isSelectStart)
+        //{
+        //    isSelectStart = false;
+        //}
+        //else
+        //{
+
+        //}
+        if(go.layer==8)
+        {
+            Desmark();
+            lixeira.GetComponent<Image>().color = new Color(0.92f, 0.87f, 0.63f, 1);
+        }
+        else if(go.layer==9)
+        {
+            Desmark();
+            images.transform.parent.GetChild(go.transform.GetSiblingIndex()).gameObject.GetComponent<Image>().color = new Color(0.92f,0.87f,0.63f,1);
+        }
+        else if(go.layer==10)
+        {
+
+        }
+    }
+    private void Desmark()
+    {
+        lixeira.GetComponent<Image>().color = new Color(0.16f,0.01f,0.01f,1);
+        for(int i=0;i<images.transform.parent.transform.childCount;i++)
+        {
+            images.transform.parent.GetChild(0).gameObject.GetComponent<Image>().color = new Color(1,1,1,1);
+        }
+    }
 
 
     public void ClickPosition(GameObject go)
