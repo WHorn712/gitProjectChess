@@ -18,7 +18,10 @@ public class Main : MonoBehaviour
     private GameObject lixeira;
     [SerializeField]
     private GameObject images;
-    private int typeIncert; 
+    private int typeIncert;
+    private int reiSelectLinha=0;
+    private int reiSelectColuna = 0;
+    private int typeReiSelect = -1;
 
     private int count;
     private int vez;
@@ -101,7 +104,37 @@ public class Main : MonoBehaviour
 
         ////c=0 peaobranco c=1 peaopreto c=2 cavalobranco ...
         int x = go.transform.GetSiblingIndex();
-        if (go.layer==8)
+        if(typeIncert==-3)
+        {
+            if(go.layer==10)
+            { 
+            int l = go.transform.GetSiblingIndex();
+            int c = go.transform.parent.GetSiblingIndex();
+            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1,1,1,1);
+            imageSelect.transform.GetChild(reiSelectColuna).transform.GetChild(reiSelectLinha).gameObject.SetActive(false);
+
+            LxC.transform.GetChild(reiSelectColuna).transform.GetChild(reiSelectLinha).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+            LxC.transform.GetChild(reiSelectColuna).transform.GetChild(reiSelectLinha).gameObject.GetComponent<Image>().sprite = null;
+            LxC.transform.GetChild(reiSelectColuna).transform.GetChild(reiSelectLinha).gameObject.tag = "-1";
+            if (typeReiSelect==0)
+            {
+                LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = reiBranco;
+                LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "10";
+            }
+            else
+            {
+                LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = reiPreto;
+                LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "11";
+            }
+                typeIncert = -2;
+            }
+            else
+            {
+                imageSelect.transform.GetChild(reiSelectColuna).transform.GetChild(reiSelectLinha).gameObject.SetActive(false);
+                typeIncert = -2;
+            }
+        }
+        else if (go.layer==8)
         {
             Desmark();
             lixeira.GetComponent<Image>().color = new Color(0.92f, 0.87f, 0.63f, 1);
@@ -115,47 +148,85 @@ public class Main : MonoBehaviour
         }
         else if(go.layer==10)
         {
-            if (typeIncert > -2)
+            int l = go.transform.GetSiblingIndex();
+            int c = go.transform.parent.GetSiblingIndex();
+            if (typeIncert > -2 && (LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag != "10" && LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag != "11"))
             {
-                int l = go.transform.GetSiblingIndex();
-                int c = go.transform.parent.GetSiblingIndex();
                 switch (typeIncert)
                 {
                     case -1:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1,1,1,0);
                         LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = null;
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "-1";
                         break;
                     case 0:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                         LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = peaoBranco;
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "0";
                         break;
                     case 1:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                         LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = peaoPreto;
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "1";
                         break;
                     case 2:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                         LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = cavaloBranco;
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "2";
                         break;
                     case 3:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                         LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = cavaloPreto;
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "3";
                         break;
                     case 4:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                         LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = bispoBranco;
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "4";
                         break;
                     case 5:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                         LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = bispoPreto;
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "5";
                         break;
                     case 6:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                         LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = torreBranco;
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "6";
                         break;
                     case 7:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                         LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = torrePreto;
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "7";
                         break;
                     case 8:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                         LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = damaBranco;
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "8";
                         break;
                     case 9:
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                         LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = damaPreto;
+                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "9";
                         break;
                     default:
                         break;
+                }
+            }
+            else if(LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag == "10" || LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag == "11")
+            {
+                imageSelect.transform.GetChild(c).transform.GetChild(l).gameObject.SetActive(true);
+                Desmark();
+                typeIncert = -3;
+                reiSelectLinha = l;
+                reiSelectColuna = c;
+                if(LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag == "10")
+                {
+                    typeReiSelect = 0;
+                }
+                else
+                {
+                    typeReiSelect = 1;
                 }
             }
         }
