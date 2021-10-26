@@ -22,6 +22,9 @@ public class Main : MonoBehaviour
     private int reiSelectLinha=0;
     private int reiSelectColuna = 0;
     private int typeReiSelect = -1;
+    Dictionary<int, int> pecasTab = new Dictionary<int, int>();
+    Dictionary<string, int> posicaoPecasTab = new Dictionary<string, int>();
+    
 
     private int count;
     private int vez;
@@ -96,7 +99,145 @@ public class Main : MonoBehaviour
     {
         Debug.Log("ok2");
     }
-    
+
+    public void ClickStart()
+    {
+        for(int i=0;i<LxC.transform.childCount;i++)
+        {
+            for(int c=0;c<LxC.transform.GetChild(i).transform.childCount;c++)
+            {
+                int x = 0;
+                int.TryParse(LxC.transform.GetChild(i).transform.GetChild(c).gameObject.tag,out x);
+                if (x>=0)
+                {
+                    CountingPecas(LxC.transform.GetChild(i).transform.GetChild(c).gameObject.tag, pecasTab, c, i);
+                }
+            }
+        }
+        
+    }
+
+    private void CountingPecas(string tag,Dictionary<int,int> d,int lin,int col)
+    {
+        int c = 0;
+        int b = 0;
+        int.TryParse(tag,out b);
+        int a = 0;
+        int i = 0;
+        switch(b)
+        {
+            case 0:
+                d.TryGetValue(0,out a);
+                a++;
+                c = a;
+                d.Remove(0);
+                d.Add(0,c);
+                i = a - 1;
+                posicaoPecasTab.Add("0"+i+"1",lin);
+                posicaoPecasTab.Add("0" + i + "2", col);
+                break;
+            case 1:
+                d.TryGetValue(1, out a);
+                a++;
+                c = a;
+                d.Remove(1);
+                d.Add(1, c);
+                i = a - 1;
+                posicaoPecasTab.Add("1" + i + "1", lin);
+                posicaoPecasTab.Add("1" + i + "2", col);
+                break;
+            case 2:
+                d.TryGetValue(2, out a);
+                a++;
+                c = a;
+                d.Remove(2);
+                d.Add(2, c);
+                i = a - 1;
+                posicaoPecasTab.Add("2" + i + "1", lin);
+                posicaoPecasTab.Add("2" + i + "2", col);
+                break;
+            case 3:
+                d.TryGetValue(3, out a);
+                a++;
+                c = a;
+                d.Remove(3);
+                d.Add(3, c);
+                i = a - 1;
+                posicaoPecasTab.Add("3" + i + "1", lin);
+                posicaoPecasTab.Add("3" + i + "2", col);
+                break;
+            case 4:
+                d.TryGetValue(4, out a);
+                a++;
+                c = a;
+                d.Remove(4);
+                d.Add(4, c);
+                i = a - 1;
+                posicaoPecasTab.Add("4" + i + "1", lin);
+                posicaoPecasTab.Add("4" + i + "2", col);
+                break;
+            case 5:
+                d.TryGetValue(5, out a);
+                a++;
+                c = a;
+                d.Remove(5);
+                d.Add(5, c);
+                i = a - 1;
+                posicaoPecasTab.Add("5" + i + "1", lin);
+                posicaoPecasTab.Add("5" + i + "2", col);
+                break;
+            case 6:
+                d.TryGetValue(6, out a);
+                a++;
+                c = a;
+                d.Remove(6);
+                d.Add(6, c);
+                i = a - 1;
+                posicaoPecasTab.Add("6" + i + "1", lin);
+                posicaoPecasTab.Add("6" + i + "2", col);
+                break;
+            case 7:
+                d.TryGetValue(7, out a);
+                a++;
+                c = a;
+                d.Remove(7);
+                d.Add(7, c);
+                i = a - 1;
+                posicaoPecasTab.Add("7" + i + "1", lin);
+                posicaoPecasTab.Add("7" + i + "2", col);
+                break;
+            case 8:
+                d.TryGetValue(8, out a);
+                a++;
+                c = a;
+                d.Remove(8);
+                d.Add(8, c);
+                i = a - 1;
+                posicaoPecasTab.Add("8" + i + "1", lin);
+                posicaoPecasTab.Add("8" + i + "2", col);
+                break;
+            case 9:
+                d.TryGetValue(9, out a);
+                a++;
+                c = a;
+                d.Remove(9);
+                d.Add(9, c);
+                i = a - 1;
+                posicaoPecasTab.Add("9" + i + "1", lin);
+                posicaoPecasTab.Add("9" + i + "2", col);
+                break;
+            case 10:
+                posicaoPecasTab.Add("10" + "0" + "1", lin);
+                posicaoPecasTab.Add("10" + "0" + "2", col);
+                break;
+            case 11:
+                posicaoPecasTab.Add("11" + "0" + "1", lin);
+                posicaoPecasTab.Add("11" + "0" + "2", col);
+                break;
+            default:
+                break;
+        }
+    }
 
 
     public void ClickPositionStart(GameObject go)
@@ -231,6 +372,7 @@ public class Main : MonoBehaviour
             }
         }
     }
+
     private void Desmark()
     {
         lixeira.GetComponent<Image>().color = new Color(0.16f,0.01f,0.01f,1);
