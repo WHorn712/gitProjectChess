@@ -15083,11 +15083,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1993336656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 747cd0d844a936247af6841bea148437, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ba5fbad6e15720498ba9ab649ab998c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lixeira: {fileID: 652590206}
   images: {fileID: 1946353249}
+  testePosicoesIndex: 0
+  LxC: {fileID: 1234427365}
+  imageSelect: {fileID: 1139620112}
   peaoBranco: {fileID: 924579793512136347, guid: 686011049c6363e4594129be18565701,
     type: 3}
   cavaloBranco: {fileID: -7188122615814651181, guid: 686011049c6363e4594129be18565701,
@@ -15112,8 +15115,6 @@ MonoBehaviour:
     type: 3}
   reiPreto: {fileID: 5071561572868363523, guid: 686011049c6363e4594129be18565701,
     type: 3}
-  LxC: {fileID: 1234427365}
-  imageSelect: {fileID: 1139620112}
 --- !u!114 &1993336658
 MonoBehaviour:
   m_ObjectHideFlags: 0
