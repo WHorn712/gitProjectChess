@@ -74,6 +74,8 @@ public class Main : MonoBehaviour
 
     Dictionary<int,List<int>> d = new System.Collections.Generic.Dictionary<int,List<int>>();
 
+    PosicaoPeca p;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,7 +88,7 @@ public class Main : MonoBehaviour
         vez = 0;
         isSelect = false;
         
-        tab = new Tabuleiro();
+        tab = new Tabuleiro(p);
     }
 
     // Update is called once per frame
@@ -104,7 +106,7 @@ public class Main : MonoBehaviour
 
     private void IniateDictionary()
     {
-        PosicaoPeca p = SavePositions.LoadPos();
+        p = SavePositions.LoadPos();
         peaoBrancoPosi = p.PeaoBrancoPosi;
         peaoPretoPosi = p.PeaoPretoPosi;
         cavaloBrancoPosi = p.CavaloBrancoPosi;

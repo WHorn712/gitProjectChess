@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainTela : MonoBehaviour
 {
-    
+    Tabuleiro tab = new Tabuleiro();
 
     [SerializeField]
     private GameObject lixeira;
@@ -219,65 +219,81 @@ public class MainTela : MonoBehaviour
             int c = go.transform.parent.GetSiblingIndex();
             if (typeIncert > -2 && (LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag != "10" && LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag != "11"))
             {
-                switch (typeIncert)
+                bool ok = true;
+                if (typeIncert != -1)
                 {
-                    case -1:
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = null;
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "-1";
-                        break;
-                    case 0:
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = peaoBranco;
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "0";
-                        break;
-                    case 1:
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = peaoPreto;
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "1";
-                        break;
-                    case 2:
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = cavaloBranco;
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "2";
-                        break;
-                    case 3:
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = cavaloPreto;
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "3";
-                        break;
-                    case 4:
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = bispoBranco;
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "4";
-                        break;
-                    case 5:
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = bispoPreto;
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "5";
-                        break;
-                    case 6:
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = torreBranco;
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "6";
-                        break;
-                    case 7:
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = torrePreto;
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "7";
-                        break;
-                    case 8:
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = damaBranco;
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "8";
-                        break;
-                    case 9:
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = damaPreto;
-                        LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "9";
-                        break;
-                    default:
-                        break;
+                    ok = true;
+                }
+                //else
+                //{
+                //    ok = tab.MovePecaMainTela(typeIncert,l,c,tab);
+                //}
+                if (ok)
+                {
+                    switch (typeIncert)
+                    {
+                        case -1:
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = null;
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "-1";
+                            break;
+                        case 0:
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = peaoBranco;
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "0";
+                            break;
+                        case 1:
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = peaoPreto;
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "1";
+                            break;
+                        case 2:
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = cavaloBranco;
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "2";
+                            break;
+                        case 3:
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = cavaloPreto;
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "3";
+                            break;
+                        case 4:
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = bispoBranco;
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "4";
+                            break;
+                        case 5:
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = bispoPreto;
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "5";
+                            break;
+                        case 6:
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = torreBranco;
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "6";
+                            break;
+                        case 7:
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = torrePreto;
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "7";
+                            break;
+                        case 8:
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = damaBranco;
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "8";
+                            break;
+                        case 9:
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.GetComponent<Image>().sprite = damaPreto;
+                            LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag = "9";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    Debug.Log("ERROR ADAPTE TABULEIRO: REIS ENCOSTANDO OU CHECK MATE INDEVIDO");
                 }
             }
             else if (LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag == "10" || LxC.transform.GetChild(c).transform.GetChild(l).gameObject.tag == "11")

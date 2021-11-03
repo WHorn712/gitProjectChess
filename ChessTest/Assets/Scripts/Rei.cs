@@ -185,7 +185,7 @@ public class Rei
 		return ok;
 	}
 
-	private bool isReiDominate(int lin, int col, Tabuleiro tab)
+	public bool isReiDominate(int lin, int col, Tabuleiro tab)
 	{
 		if (cor == 0)
 		{

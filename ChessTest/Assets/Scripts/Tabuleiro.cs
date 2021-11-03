@@ -71,6 +71,221 @@ public class Tabuleiro
         reiBranco = tab.getReiBranco();
         reiPreto = tab.getReiPreto();
     }
+
+    public Tabuleiro(PosicaoPeca p)
+    {
+        pb = new List<Peao>();
+        pp = new List<Peao>();
+        cb = new List<Cavalo>();
+        cp = new List<Cavalo>();
+        bb = new List<Bispo>();
+        bp = new List<Bispo>();
+        tb = new List<Torre>();
+        tp = new List<Torre>();
+        db = new List<Dama>();
+        dp = new List<Dama>();
+        for(int i=0;i<p.PeaoBrancoPosi.Count;i+=2)
+        {
+            pb.Add(new Peao(0,p.PeaoBrancoPosi[i],p.PeaoBrancoPosi[i+1]));
+        }
+        for (int i = 0; i < p.PeaoPretoPosi.Count; i+=2)
+        {
+            pp.Add(new Peao(1, p.PeaoPretoPosi[i], p.PeaoPretoPosi[i + 1]));
+        }
+        for (int i = 0; i < p.CavaloBrancoPosi.Count; i+=2)
+        {
+            cb.Add(new Cavalo(0, p.CavaloBrancoPosi[i], p.CavaloBrancoPosi[i + 1]));
+        }
+        for (int i = 0; i < p.CavaloPretoPosi.Count; i+=2)
+        {
+            cp.Add(new Cavalo(1, p.CavaloPretoPosi[i], p.CavaloPretoPosi[i + 1]));
+        }
+        for (int i = 0; i < p.BispoBrancoPosi.Count; i+=2)
+        {
+            bb.Add(new Bispo(0, p.BispoBrancoPosi[i], p.BispoBrancoPosi[i + 1]));
+        }
+        for (int i = 0; i < p.BispoPretoPosi.Count; i+=2)
+        {
+            bp.Add(new Bispo(1, p.BispoPretoPosi[i], p.BispoPretoPosi[i + 1]));
+        }
+        for (int i = 0; i < p.TorreBrancoPosi.Count; i+=2)
+        {
+            tb.Add(new Torre(0, p.TorreBrancoPosi[i], p.TorreBrancoPosi[i + 1]));
+        }
+        for (int i = 0; i < p.TorrePretoPosi.Count; i+=2)
+        {
+            tp.Add(new Torre(1, p.TorrePretoPosi[i], p.TorrePretoPosi[i + 1]));
+        }
+        for (int i = 0; i < p.DamaBrancoPosi.Count; i+=2)
+        {
+            db.Add(new Dama(0, p.DamaBrancoPosi[i], p.DamaBrancoPosi[i + 1]));
+        }
+        for (int i = 0; i < p.DamaPretoPosi.Count; i+=2)
+        {
+            dp.Add(new Dama(1, p.DamaPretoPosi[i], p.DamaPretoPosi[i + 1]));
+        }
+        reiBranco = new Rei(0,p.ReiBrancoPosi[0],p.ReiBrancoPosi[1]);
+        reiPreto = new Rei(1, p.ReiPretoPosi[0], p.ReiPretoPosi[1]);
+    }
+
+    //move a peca no menu
+    public bool MovePecaMainTela(int type,int lin,int col,Tabuleiro tab)
+    {
+        if (type == 10)
+        {
+            //reiBranco
+            if (reiBranco.isReiDominate(lin, col, tab))
+            {
+                return false;
+            }
+        }
+        else if (type == 11)
+        {
+            //reiPreto
+            if (reiPreto.isReiDominate(lin, col, tab))
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if (reiBranco.isPosition(lin, col))
+            {
+                return false;
+            }
+            else if (reiPreto.isPosition(lin, col))
+            {
+                return false;
+            }
+            PositionisEmptyBranco(lin, col, 1);
+            PositionisEmptyPreto(lin, col, 1);
+            ToMakeMovimentMainTela(0,lin,col,type);
+            if(reiBranco.isCheckMate(this)==false)
+            {
+                ToMakeMovimentMainTela(1,lin,col,type);
+                ReecolockPeca(lin,col);
+                return false;
+            }
+            else if (reiPreto.isCheckMate(this) == false)
+            {
+                ToMakeMovimentMainTela(1,lin, col, type);
+                ReecolockPeca(lin, col);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void ToMakeMovimentMainTela(int t,int lin,int col,int type)
+    {
+        switch (type)
+        {
+            case 0:
+                if (t == 0)
+                {
+                    pb.Add(new Peao(0, lin, col));
+                }
+                else
+                {
+                    pb.Remove(pb[pb.Count-1]);
+                }
+                break;
+            case 1:
+                if (t == 0)
+                {
+                    pp.Add(new Peao(1, lin, col));
+                }
+                else
+                {
+                    pp.Remove(pp[pp.Count - 1]);
+                }
+                break;
+            case 2:
+                if (t == 0)
+                {
+                    cb.Add(new Cavalo(0, lin, col));
+                }
+                else
+                {
+                    cb.Remove(cb[cb.Count - 1]);
+                }
+                break;
+            case 3:
+                if (t == 0)
+                {
+                    cp.Add(new Cavalo(1, lin, col));
+                }
+                else
+                {
+                    cp.Remove(cp[cp.Count - 1]);
+                }
+                break;
+            case 4:
+                if (t == 0)
+                {
+                    bb.Add(new Bispo(0, lin, col));
+                }
+                else
+                {
+                    bb.Remove(bb[bb.Count - 1]);
+                }
+                break;
+            case 5:
+                if (t == 0)
+                {
+                    bp.Add(new Bispo(1, lin, col));
+                }
+                else
+                {
+                    bp.Remove(bp[bp.Count - 1]);
+                }
+                break;
+            case 6:
+                if (t == 0)
+                {
+                    tb.Add(new Torre(0, lin, col));
+                }
+                else
+                {
+                    tb.Remove(tb[tb.Count - 1]);
+                }
+                break;
+            case 7:
+                if (t == 0)
+                {
+                    tp.Add(new Torre(1, lin, col));
+                }
+                else
+                {
+                    tp.Remove(tp[tp.Count - 1]);
+                }
+                break;
+            case 8:
+                if (t == 0)
+                {
+                    db.Add(new Dama(0, lin, col));
+                }
+                else
+                {
+                    db.Remove(db[db.Count - 1]);
+                }
+                break;
+            case 9:
+                if (t == 0)
+                {
+                    dp.Add(new Dama(1, lin, col));
+                }
+                else
+                {
+                    dp.Remove(dp[dp.Count - 1]);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+
     public bool IsEnd
     {
         get
@@ -565,6 +780,7 @@ public class Tabuleiro
         {
             dp.Add(new Dama(1, lin, col));
         }
+        pecaMoveCheck = -1;
     }
 
     public bool isAfogamento(int vez)
