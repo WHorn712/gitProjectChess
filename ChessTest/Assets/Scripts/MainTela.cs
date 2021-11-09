@@ -59,10 +59,19 @@ public class MainTela : MonoBehaviour
     List<int> damaPretoPosi = new List<int>();
     List<int> reiBrancoPosi = new List<int>();
     List<int> reiPretoPosi = new List<int>();
+
+    Dictionary<int, List<int>> d = new System.Collections.Generic.Dictionary<int, List<int>>();
+    PosicaoPeca p;
     // Start is called before the first frame update
     void Start()
     {
         typeIncert = -2;
+        if(SavePositions.isExist())
+        {
+            ClearTabuleiro();
+            IniateDictionary();
+            StartPositionTab();
+        }
     }
 
     // Update is called once per frame
@@ -156,6 +165,175 @@ public class MainTela : MonoBehaviour
         }
     }
 
+
+    private void ClearTabuleiro()
+    {
+        for (int i = 0; i < LxC.transform.childCount; i++)
+        {
+            for (int c = 0; c < LxC.transform.GetChild(i).transform.childCount; c++)
+            {
+                LxC.transform.GetChild(i).transform.GetChild(c).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                LxC.transform.GetChild(i).transform.GetChild(c).gameObject.GetComponent<Image>().sprite = null;
+                LxC.transform.GetChild(i).transform.GetChild(c).gameObject.tag = "-1";
+            }
+        }
+    }
+
+    private void IniateDictionary()
+    {
+        p = SavePositions.LoadPos();
+        peaoBrancoPosi = p.PeaoBrancoPosi;
+        peaoPretoPosi = p.PeaoPretoPosi;
+        cavaloBrancoPosi = p.CavaloBrancoPosi;
+        cavaloPretoPosi = p.CavaloPretoPosi;
+        bispoBrancoPosi = p.BispoBrancoPosi;
+        bispoPretoPosi = p.BispoPretoPosi;
+        torreBrancoPosi = p.TorreBrancoPosi;
+        torrePretoPosi = p.TorrePretoPosi;
+        damaBrancoPosi = p.DamaBrancoPosi;
+        damaPretoPosi = p.DamaPretoPosi;
+        reiBrancoPosi = p.ReiBrancoPosi;
+        reiPretoPosi = p.ReiPretoPosi;
+        d.Add(0, peaoBrancoPosi);
+        d.Add(1, peaoPretoPosi);
+        d.Add(2, cavaloBrancoPosi);
+        d.Add(3, cavaloPretoPosi);
+        d.Add(4, bispoBrancoPosi);
+        d.Add(5, bispoPretoPosi);
+        d.Add(6, torreBrancoPosi);
+        d.Add(7, torrePretoPosi);
+        d.Add(8, damaBrancoPosi);
+        d.Add(9, damaPretoPosi);
+        d.Add(10, reiBrancoPosi);
+        d.Add(11, reiPretoPosi);
+    }
+
+    private void PutPecainPosi(int t, int lin, int col)
+    {
+        switch (t)
+        {
+            case 0:
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().sprite = peaoBranco;
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.tag = "0";
+                break;
+            case 1:
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().sprite = peaoPreto;
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.tag = "1";
+                break;
+            case 2:
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().sprite = cavaloBranco;
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.tag = "2";
+                break;
+            case 3:
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().sprite = cavaloPreto;
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.tag = "3";
+                break;
+            case 4:
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().sprite = bispoBranco;
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.tag = "4";
+                break;
+            case 5:
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().sprite = bispoPreto;
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.tag = "5";
+                break;
+            case 6:
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().sprite = torreBranco;
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.tag = "6";
+                break;
+            case 7:
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().sprite = torrePreto;
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.tag = "7";
+                break;
+            case 8:
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().sprite = damaBranco;
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.tag = "8";
+                break;
+            case 9:
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().sprite = damaPreto;
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.tag = "9";
+                break;
+            case 10:
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().sprite = reiBranco;
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.tag = "10";
+                break;
+            case 11:
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.GetComponent<Image>().sprite = reiPreto;
+                LxC.transform.GetChild(col).transform.GetChild(lin).gameObject.tag = "11";
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void AnalizePosPeca()
+    {
+        for (int i = 0; i < 12; i++)
+        {
+            List<int> x;
+            d.TryGetValue(i, out x);
+            if (x.Count % 2 == 0)
+            {
+                for (int c = 0; c < x.Count; c += 2)
+                {
+                    int lin = x[c];
+                    int col = x[c + 1];
+                    PutPecainPosi(i, lin, col);
+                }
+            }
+            else
+            {
+                Debug.Log("TEM ALGO ERRADO MAIN L:146");
+            }
+        }
+    }
+
+    private void StartPositionTab()
+    {
+        AnalizePosPeca();
+    }
+
+
+
+    public void ClickPadrao()
+    {
+        ClearTabuleiro();
+        PutPecainPosi(6,0,0);
+        PutPecainPosi(2, 0, 1);
+        PutPecainPosi(4, 0, 2);
+        PutPecainPosi(8, 0, 3);
+        PutPecainPosi(10, 0, 4);
+        PutPecainPosi(4, 0, 5);
+        PutPecainPosi(2, 0, 6);
+        PutPecainPosi(6, 0, 7);
+        PutPecainPosi(7, 7, 0);
+        PutPecainPosi(3, 7, 1);
+        PutPecainPosi(5, 7, 2);
+        PutPecainPosi(9, 7, 3);
+        PutPecainPosi(11, 7, 4);
+        PutPecainPosi(5, 7, 5);
+        PutPecainPosi(3, 7, 6);
+        PutPecainPosi(7, 7, 7);
+        for(int i=0;i<8;i++)
+        {
+            PutPecainPosi(0,1,i);
+        }
+        for (int i = 0; i < 8; i++)
+        {
+            PutPecainPosi(1, 6, i);
+        }
+    }
 
     private void Desmark()
     {

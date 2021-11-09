@@ -36,4 +36,10 @@ public static class SavePositions
         Debug.Log("ERROR " + path);
         return null;
     }
+
+    public static bool isExist()
+    {
+        string path = Application.persistentDataPath + "/posi.dat";
+        return File.Exists(path);
+    }
 }

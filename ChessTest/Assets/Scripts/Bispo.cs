@@ -54,7 +54,7 @@ public class Bispo
 		}
 	}
 
-	private bool CheckPossible(int l, int c)
+	public bool CheckPossible(int l, int c)
 	{
 		if (l >= 0 && l <= 7 && c >= 0 && c <= 7)
 		{

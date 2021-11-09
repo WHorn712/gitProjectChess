@@ -9,8 +9,17 @@ public class Rei
 	private int coluna;
 	private bool isRoque;
 
+	Peca peca;
+
+	//noCheck==-1 ; peao==0 ; cavalo==1 ; bispo==2 ; torre==3 ; dama==4
+	private int typeCheck;
+	private int indexPeca;
+
 	public Rei(int c, int lin, int col)
 	{
+		peca = null;
+		indexPeca = -1;
+		typeCheck = -1;
 		cor = c;
 		linha = lin;
 		coluna = col;
@@ -75,6 +84,9 @@ public class Rei
 			{
 				if (tab.getPp()[i].isCheckRei(linha, coluna))
 				{
+					peca = new Peca(tab.getPp()[i].Linha(),tab.getPp()[i].Coluna(),0,1);
+					indexPeca = i;
+					typeCheck = 0;
 					return true;
 				}
 			}
@@ -82,6 +94,9 @@ public class Rei
             {
                 if (tab.getCp()[i].isCheckRei(linha, coluna))
                 {
+					peca = new Peca(tab.getCp()[i].getLinha(), tab.getCp()[i].getColuna(), 1, 1);
+					indexPeca = i;
+					typeCheck = 1;
                     return true;
                 }
             }
@@ -89,6 +104,9 @@ public class Rei
             {
                 if (tab.getBp()[i].isMovimentPadron(linha, coluna, tab, 1))
                 {
+					peca = new Peca(tab.getBp()[i].getLinha(), tab.getBp()[i].getColuna(), 2, 1);
+					indexPeca = i;
+					typeCheck = 2;
                     return true;
                 }
             }
@@ -96,6 +114,9 @@ public class Rei
             {
                 if (tab.getTp()[i].IsMovimentPadron(linha, coluna, tab, 1))
                 {
+					peca = new Peca(tab.getTp()[i].getLinha(), tab.getTp()[i].getColuna(), 3, 1);
+					indexPeca = i;
+					typeCheck = 3;
                     return true;
                 }
             }
@@ -103,6 +124,9 @@ public class Rei
             {
                 if (tab.getDp()[i].isMovimentPadron(linha, coluna, tab))
                 {
+					peca = new Peca(tab.getDp()[i].getLinha(), tab.getDp()[i].getColuna(), 4, 1);
+					indexPeca = i;
+					typeCheck = 4;
                     return true;
                 }
             }
@@ -113,6 +137,9 @@ public class Rei
 			{
 				if (tab.getPb()[i].isCheckRei(linha, coluna))
 				{
+					peca = new Peca(tab.getPb()[i].Linha(), tab.getPb()[i].Coluna(), 0, 0);
+					indexPeca = i;
+					typeCheck = 0;
 					return true;
 				}
 			}
@@ -120,6 +147,9 @@ public class Rei
             {
                 if (tab.getCb()[i].isCheckRei(linha, coluna))
                 {
+					peca = new Peca(tab.getCb()[i].getLinha(), tab.getCb()[i].getColuna(), 1, 0);
+					indexPeca = i;
+					typeCheck = 1;
                     return true;
                 }
             }
@@ -127,6 +157,9 @@ public class Rei
             {
                 if (tab.getBb()[i].isMovimentPadron(linha, coluna, tab, 1))
                 {
+					peca = new Peca(tab.getBb()[i].getLinha(), tab.getBb()[i].getColuna(), 2, 0);
+					indexPeca = i;
+					typeCheck = 2;
                     return true;
                 }
             }
@@ -134,6 +167,9 @@ public class Rei
             {
                 if (tab.getTb()[i].IsMovimentPadron(linha, coluna, tab, 1))
                 {
+					peca = new Peca(tab.getTb()[i].getLinha(), tab.getTb()[i].getColuna(), 3, 0);
+					indexPeca = i;
+					typeCheck = 3;
                     return true;
                 }
             }
@@ -141,10 +177,14 @@ public class Rei
             {
                 if (tab.getDb()[i].isMovimentPadron(linha, coluna, tab))
                 {
+					peca = new Peca(tab.getDb()[i].getLinha(), tab.getDb()[i].getColuna(), 4, 0);
+					indexPeca = i;
+					typeCheck = 4;
                     return true;
                 }
             }
         }
+		typeCheck = -1;
 		return false;
 	}
 
@@ -283,86 +323,97 @@ public class Rei
 		{
 			return true;
 		}
-		else
-		{
-			if (cor == 0)
-			{
-				for (int i = 0; i < t.getPb().Count; i++)
-				{
-					if (t.getPb()[i].AnalizeAllMoviments(t))
-					{
-						return true;
-					}
-				}
-                for (int i = 0; i < t.getCb().Count; i++)
-                {
-                    if (t.getCb()[i].AllMovimentPossible(t))
-                    {
-                        return true;
-                    }
-                }
-                for (int i = 0; i < t.getBb().Count; i++)
-                {
-                    if (t.getBb()[i].AllMovimentPossible(t))
-                    {
-                        return true;
-                    }
-                }
-                for (int i = 0; i < t.getTb().Count; i++)
-                {
-                    if (t.getTb()[i].AllMovimentPossible(t))
-                    {
-                        return true;
-                    }
-                }
-                for (int i = 0; i < t.getDb().Count; i++)
-                {
-                    if (t.getDb()[i].AllMovimentPossible(t))
-                    {
-                        return true;
-                    }
-                }
-            }
-			else
-			{
-				for (int i = 0; i < t.getPp().Count; i++)
-				{
-					if (t.getPp()[i].AnalizeAllMoviments(t))
-					{
-						return true;
-					}
-				}
-                for (int i = 0; i < t.getCp().Count; i++)
-                {
-                    if (t.getCp()[i].AllMovimentPossible(t))
-                    {
-                        return true;
-                    }
-                }
-                for (int i = 0; i < t.getBp().Count; i++)
-                {
-                    if (t.getBp()[i].AllMovimentPossible(t))
-                    {
-                        return true;
-                    }
-                }
-                for (int i = 0; i < t.getTp().Count; i++)
-                {
-                    if (t.getTp()[i].AllMovimentPossible(t))
-                    {
-                        return true;
-                    }
-                }
-                for (int i = 0; i < t.getDp().Count; i++)
-                {
-                    if (t.getDp()[i].AllMovimentPossible(t))
-                    {
-                        return true;
-                    }
-                }
-            }
-		}
-		return false;
+		//else
+		//{
+		//	if (cor == 0)
+		//	{
+		//		for (int i = 0; i < t.getPb().Count; i++)
+		//		{
+		//			if (t.getPb()[i].AnalizeAllMoviments(t))
+		//			{
+		//				return true;
+		//			}
+		//		}
+  //              for (int i = 0; i < t.getCb().Count; i++)
+  //              {
+  //                  if (t.getCb()[i].AllMovimentPossible(t))
+  //                  {
+  //                      return true;
+  //                  }
+  //              }
+  //              for (int i = 0; i < t.getBb().Count; i++)
+  //              {
+  //                  if (t.getBb()[i].AllMovimentPossible(t))
+  //                  {
+  //                      return true;
+  //                  }
+  //              }
+  //              for (int i = 0; i < t.getTb().Count; i++)
+  //              {
+  //                  if (t.getTb()[i].AllMovimentPossible(t))
+  //                  {
+  //                      return true;
+  //                  }
+  //              }
+  //              for (int i = 0; i < t.getDb().Count; i++)
+  //              {
+  //                  if (t.getDb()[i].AllMovimentPossible(t))
+  //                  {
+  //                      return true;
+  //                  }
+  //              }
+  //          }
+		//	else
+		//	{
+		//		for (int i = 0; i < t.getPp().Count; i++)
+		//		{
+		//			if (t.getPp()[i].AnalizeAllMoviments(t))
+		//			{
+		//				return true;
+		//			}
+		//		}
+		//		Debug.Log("pp");
+  //              for (int i = 0; i < t.getCp().Count; i++)
+  //              {
+  //                  if (t.getCp()[i].AllMovimentPossible(t))
+  //                  {
+  //                      return true;
+  //                  }
+  //              }
+		//		Debug.Log("cp");
+		//		for (int i = 0; i < t.getBp().Count; i++)
+  //              {
+  //                  if (t.getBp()[i].AllMovimentPossible(t))
+  //                  {
+  //                      return true;
+  //                  }
+  //              }
+		//		Debug.Log("bp");
+		//		for (int i = 0; i < t.getTp().Count; i++)
+  //              {
+  //                  if (t.getTp()[i].AllMovimentPossible(t))
+  //                  {
+  //                      return true;
+  //                  }
+  //              }
+		//		Debug.Log("tp");
+		//		for (int i = 0; i < t.getDp().Count; i++)
+  //              {
+  //                  if (t.getDp()[i].AllMovimentPossible(t))
+  //                  {
+  //                      return true;
+  //                  }
+  //              }
+		//		Debug.Log("dp");
+		//	}
+		//}
+
+		isCheck(t);
+		if(peca.HimEliminator(t))
+        {
+			return true;
+        }
+		return peca.PutToFace(this,t);
 	}
 
 	//Método para fazer o rock
