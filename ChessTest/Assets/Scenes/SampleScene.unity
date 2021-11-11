@@ -1361,7 +1361,7 @@ MonoBehaviour:
     type: 3}
   LxC: {fileID: 1071805545}
   imageSelect: {fileID: 1900037602}
-  imageTelaPromotion: {fileID: 0}
+  imageTelaPromotion: {fileID: 1459409208}
 --- !u!1 &186308290
 GameObject:
   m_ObjectHideFlags: 0
@@ -6171,7 +6171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1509434, g: 0.13741545, b: 0.13741545, a: 0.39215687}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8156863}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7219,7 +7219,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 900207514}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143398486}
+        m_MethodName: ClickPromotion
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &900207514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8157,7 +8168,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1136571126}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143398486}
+        m_MethodName: ClickPromotion
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1136571126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10640,7 +10662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1459409209
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10832,7 +10854,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1476465333}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143398486}
+        m_MethodName: ClickPromotion
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1476465333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11284,7 +11317,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1578697326}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143398486}
+        m_MethodName: ClickPromotion
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1578697326
 MonoBehaviour:
   m_ObjectHideFlags: 0

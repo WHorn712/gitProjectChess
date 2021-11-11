@@ -287,6 +287,7 @@ public class Main : MonoBehaviour
     {
         tab.Promotion(index, cor, linhaPeao, colunaPeao, type);
         ChangeImagePeao(type);
+        imageTelaPromotion.SetActive(false);
         if (cor==0)
         {
             if (tab.getReiPreto().isCheck(tab))

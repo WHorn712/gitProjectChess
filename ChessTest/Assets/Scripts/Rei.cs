@@ -9,17 +9,14 @@ public class Rei
 	private int coluna;
 	private bool isRoque;
 
-	Peca peca;
+	List<Peca> peca = new List<Peca>();
 
 	//noCheck==-1 ; peao==0 ; cavalo==1 ; bispo==2 ; torre==3 ; dama==4
-	private int typeCheck;
-	private int indexPeca;
+	private List<int> typeCheck=new List<int>();
+	private List<int> indexPeca=new List<int>();
 
 	public Rei(int c, int lin, int col)
 	{
-		peca = null;
-		indexPeca = -1;
-		typeCheck = -1;
 		cor = c;
 		linha = lin;
 		coluna = col;
@@ -78,57 +75,61 @@ public class Rei
 
 	public bool isCheck(Tabuleiro tab)
 	{
+		bool ok = false;
+		typeCheck.Clear();
+		indexPeca.Clear();
+		peca.Clear();
 		if (cor == 0)
 		{
 			for (int i = 0; i < tab.getPp().Count; i++)
 			{
 				if (tab.getPp()[i].isCheckRei(linha, coluna))
 				{
-					peca = new Peca(tab.getPp()[i].Linha(),tab.getPp()[i].Coluna(),0,1);
-					indexPeca = i;
-					typeCheck = 0;
-					return true;
+					peca.Add(new Peca(tab.getPp()[i].Linha(), tab.getPp()[i].Coluna(), 0, 1));
+					indexPeca.Add(i);
+					typeCheck.Add(0);
+					ok = true;
 				}
 			}
             for (int i = 0; i < tab.getCp().Count; i++)
             {
                 if (tab.getCp()[i].isCheckRei(linha, coluna))
                 {
-					peca = new Peca(tab.getCp()[i].getLinha(), tab.getCp()[i].getColuna(), 1, 1);
-					indexPeca = i;
-					typeCheck = 1;
-                    return true;
-                }
+					peca.Add(new Peca(tab.getCp()[i].getLinha(), tab.getCp()[i].getColuna(), 1, 1));
+					indexPeca.Add(i);
+					typeCheck.Add(1);
+					ok = true;
+				}
             }
             for (int i = 0; i < tab.getBp().Count; i++)
             {
                 if (tab.getBp()[i].isMovimentPadron(linha, coluna, tab, 1))
                 {
-					peca = new Peca(tab.getBp()[i].getLinha(), tab.getBp()[i].getColuna(), 2, 1);
-					indexPeca = i;
-					typeCheck = 2;
-                    return true;
-                }
+					peca.Add(new Peca(tab.getBp()[i].getLinha(), tab.getBp()[i].getColuna(), 2, 1));
+					indexPeca.Add(i);
+					typeCheck.Add(2);
+					ok = true;
+				}
             }
             for (int i = 0; i < tab.getTp().Count; i++)
             {
                 if (tab.getTp()[i].IsMovimentPadron(linha, coluna, tab, 1))
                 {
-					peca = new Peca(tab.getTp()[i].getLinha(), tab.getTp()[i].getColuna(), 3, 1);
-					indexPeca = i;
-					typeCheck = 3;
-                    return true;
-                }
+					peca.Add(new Peca(tab.getTp()[i].getLinha(), tab.getTp()[i].getColuna(), 3, 1));
+					indexPeca.Add(i);
+					typeCheck.Add(3);
+					ok = true;
+				}
             }
             for (int i = 0; i < tab.getDp().Count; i++)
             {
                 if (tab.getDp()[i].isMovimentPadron(linha, coluna, tab))
                 {
-					peca = new Peca(tab.getDp()[i].getLinha(), tab.getDp()[i].getColuna(), 4, 1);
-					indexPeca = i;
-					typeCheck = 4;
-                    return true;
-                }
+					peca.Add(new Peca(tab.getDp()[i].getLinha(), tab.getDp()[i].getColuna(), 4, 1));
+					indexPeca.Add(i);
+					typeCheck.Add(4);
+					ok = true;
+				}
             }
         }
 		else if (cor == 1)
@@ -137,55 +138,54 @@ public class Rei
 			{
 				if (tab.getPb()[i].isCheckRei(linha, coluna))
 				{
-					peca = new Peca(tab.getPb()[i].Linha(), tab.getPb()[i].Coluna(), 0, 0);
-					indexPeca = i;
-					typeCheck = 0;
-					return true;
+					peca.Add(new Peca(tab.getPb()[i].Linha(), tab.getPb()[i].Coluna(), 0, 0));
+					indexPeca.Add(i);
+					typeCheck.Add(0);
+					ok = true;
 				}
 			}
             for (int i = 0; i < tab.getCb().Count; i++)
             {
                 if (tab.getCb()[i].isCheckRei(linha, coluna))
                 {
-					peca = new Peca(tab.getCb()[i].getLinha(), tab.getCb()[i].getColuna(), 1, 0);
-					indexPeca = i;
-					typeCheck = 1;
-                    return true;
-                }
+					peca.Add(new Peca(tab.getCb()[i].getLinha(), tab.getCb()[i].getColuna(), 1, 0));
+					indexPeca.Add(i);
+					typeCheck.Add(1);
+					ok = true;
+				}
             }
             for (int i = 0; i < tab.getBb().Count; i++)
             {
                 if (tab.getBb()[i].isMovimentPadron(linha, coluna, tab, 1))
                 {
-					peca = new Peca(tab.getBb()[i].getLinha(), tab.getBb()[i].getColuna(), 2, 0);
-					indexPeca = i;
-					typeCheck = 2;
-                    return true;
-                }
+					peca.Add(new Peca(tab.getBb()[i].getLinha(), tab.getBb()[i].getColuna(), 2, 0));
+					indexPeca.Add(i);
+					typeCheck.Add(2);
+					ok = true;
+				}
             }
             for (int i = 0; i < tab.getTb().Count; i++)
             {
                 if (tab.getTb()[i].IsMovimentPadron(linha, coluna, tab, 1))
                 {
-					peca = new Peca(tab.getTb()[i].getLinha(), tab.getTb()[i].getColuna(), 3, 0);
-					indexPeca = i;
-					typeCheck = 3;
-                    return true;
-                }
+					peca.Add(new Peca(tab.getTb()[i].getLinha(), tab.getTb()[i].getColuna(), 3, 0));
+					indexPeca.Add(i);
+					typeCheck.Add(3);
+					ok = true;
+				}
             }
             for (int i = 0; i < tab.getDb().Count; i++)
             {
                 if (tab.getDb()[i].isMovimentPadron(linha, coluna, tab))
                 {
-					peca = new Peca(tab.getDb()[i].getLinha(), tab.getDb()[i].getColuna(), 4, 0);
-					indexPeca = i;
-					typeCheck = 4;
-                    return true;
-                }
+					peca.Add(new Peca(tab.getDb()[i].getLinha(), tab.getDb()[i].getColuna(), 4, 0));
+					indexPeca.Add(i);
+					typeCheck.Add(4);
+					ok = true;
+				}
             }
         }
-		typeCheck = -1;
-		return false;
+		return ok;
 	}
 
 	private bool isPossibleNoCheck(Tabuleiro tab, int l, int c)
@@ -409,11 +409,15 @@ public class Rei
 		//}
 
 		isCheck(t);
-		if(peca.HimEliminator(t))
+		if(peca.Count==1)
         {
-			return true;
-        }
-		return peca.PutToFace(this,t);
+			if (peca[0].HimEliminator(t))
+			{
+				return true;
+			}
+			return peca[0].PutToFace(this, t);
+		}
+		return false;
 	}
 
 	//Método para fazer o rock
