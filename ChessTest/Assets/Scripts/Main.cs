@@ -76,6 +76,13 @@ public class Main : MonoBehaviour
 
     PosicaoPeca p;
 
+    private int index = 0;
+    private int cor = 0;
+    private int linhaPeao = 0;
+    private int colunaPeao = 0;
+    [SerializeField]
+    private GameObject imageTelaPromotion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -237,10 +244,117 @@ public class Main : MonoBehaviour
     
 
 
-    
-
-    
-
+    private void ChangeImagePeao(int type)
+    {
+        if(cor==0)
+        {
+            switch(type)
+            {
+                case 0:
+                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = damaBranco;
+                    break;
+                case 1:
+                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = torreBranco;
+                    break;
+                case 2:
+                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = bispoBranco;
+                    break;
+                case 3:
+                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = cavaloBranco;
+                    break;
+            }
+        }
+        else
+        {
+            switch (type)
+            {
+                case 0:
+                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = damaPreto;
+                    break;
+                case 1:
+                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = torrePreto;
+                    break;
+                case 2:
+                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = bispoPreto;
+                    break;
+                case 3:
+                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = cavaloPreto;
+                    break;
+            }
+        }
+    }
+    public void ClickPromotion(int type)
+    {
+        tab.Promotion(index, cor, linhaPeao, colunaPeao, type);
+        ChangeImagePeao(type);
+        if (cor==0)
+        {
+            if (tab.getReiPreto().isCheck(tab))
+            {
+                if (tab.isCheckMateReiEndGame(cor))
+                {
+                    Debug.Log("CHECK MATE. BRANCO VENCEU");
+                    tab.IsEnd = true;
+                }
+            }
+        }
+        else
+        {
+            if (tab.getReiBranco().isCheck(tab))
+            {
+                if (tab.isCheckMateReiEndGame(cor))
+                {
+                    Debug.Log("CHECK MATE. PRETO VENCEU");
+                    tab.IsEnd = true;
+                }
+            }
+        }
+        if(tab.isAfogamento(cor))
+        {
+            Debug.Log("EMPATE POR AFOGAMENTO");
+            tab.IsEnd = true;
+        }
+    }
+    private void PromotionPeao(int c)
+    {
+        if(c==0)
+        {
+            for(int i=0;i<tab.getPb().Count;i++)
+            {
+                if(tab.getPb()[i].Linha()==7)
+                {
+                    cor = 0;
+                    index = i;
+                    imageTelaPromotion.SetActive(true);
+                    linhaPeao = 7;
+                    colunaPeao = tab.getPb()[i].Coluna();
+                    ChangeImagePromotion(damaBranco,torreBranco,bispoBranco,cavaloBranco);
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < tab.getPb().Count; i++)
+            {
+                if (tab.getPb()[i].Linha() == 7)
+                {
+                    cor = 1;
+                    index = i;
+                    imageTelaPromotion.SetActive(true);
+                    linhaPeao = 0;
+                    colunaPeao = tab.getPp()[i].Coluna();
+                    ChangeImagePromotion(damaPreto, torrePreto, bispoPreto, cavaloPreto);
+                }
+            }
+        }
+    }
+    private void ChangeImagePromotion(Sprite d,Sprite t,Sprite b,Sprite c)
+    {
+        imageTelaPromotion.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = d;
+        imageTelaPromotion.transform.GetChild(2).gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = t;
+        imageTelaPromotion.transform.GetChild(3).gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = b;
+        imageTelaPromotion.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = c;
+    }
 
     public void ClickPosition(GameObject go)
     {
@@ -258,6 +372,7 @@ public class Main : MonoBehaviour
             
             if (ab)
             {
+                PromotionPeao(c);
                 Debug.Log(linOr+"."+colOr+"  /  "+linDes+"."+colDes);
                 jogadas += linOr + "." + colOr + "." + linDes + "." + colDes + " / ";
                 ToMakeLance(linOr, colOr, linDes, colDes);

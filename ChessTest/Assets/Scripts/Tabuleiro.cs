@@ -1188,6 +1188,48 @@ public class Tabuleiro
         return true;
     }
 
+    public void Promotion(int index,int cor,int lin,int col,int type)
+    {
+        if(cor==0)
+        {
+            pb.Remove(pb[index]);
+            switch (type)
+            {
+                case 0:
+                    db.Add(new Dama(cor,lin,col));
+                    break;
+                case 1:
+                    tb.Add(new Torre(cor, lin, col));
+                    break;
+                case 2:
+                    bb.Add(new Bispo(cor, lin, col));
+                    break;
+                case 3:
+                    cb.Add(new Cavalo(cor, lin, col));
+                    break;
+            }
+        }
+        else
+        {
+            pp.Remove(pp[index]);
+            switch (type)
+            {
+                case 0:
+                    dp.Add(new Dama(cor, lin, col));
+                    break;
+                case 1:
+                    tp.Add(new Torre(cor, lin, col));
+                    break;
+                case 2:
+                    bp.Add(new Bispo(cor, lin, col));
+                    break;
+                case 3:
+                    cp.Add(new Cavalo(cor, lin, col));
+                    break;
+            }
+        }
+    }
+
     private bool ToMove(int lin, int col, int cor, int l, int c)
     {
         bool ok = false;
