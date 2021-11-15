@@ -72,7 +72,7 @@ public class Peca
     {
         if(DefinindoCaminho(rei,tab))
         {
-            if(cor==0)
+            if (cor==0)
             {
                 for (int i = 0; i < lisLin.Count; i++)
                 {
@@ -188,14 +188,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (tab.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         for (int x = 1; x < 9; x++)
         {
             int lin = d[i].getLinha() + 0;
@@ -211,14 +207,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (tab.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         for (int x = 1; x < 9; x++)
         {
             int lin = d[i].getLinha() - x;
@@ -234,14 +226,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (tab.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         for (int x = 1; x < 9; x++)
         {
             int lin = d[i].getLinha() - 0;
@@ -257,14 +245,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (tab.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         for (int x = 1; x < 9; x++)
         {
             int lin = d[i].getLinha() + x;
@@ -280,14 +264,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (tab.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         for (int x = 1; x < 9; x++)
         {
             int lin = d[i].getLinha() + x;
@@ -303,14 +283,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (tab.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         for (int x = 1; x < 9; x++)
         {
             int lin = d[i].getLinha() - x;
@@ -326,14 +302,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (tab.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         for (int x = 1; x < 9; x++)
         {
             int lin = d[i].getLinha() - x;
@@ -349,14 +321,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (tab.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         return false;
     }
 
@@ -377,14 +345,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (tab.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         for (int x = 1; x < 9; x++)
         {
             int lin = t[i].getLinha() + 0;
@@ -400,14 +364,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (tab.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         for (int x = 1; x < 9; x++)
         {
             int lin = t[i].getLinha() - x;
@@ -423,14 +383,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (tab.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         for (int x = 1; x < 9; x++)
         {
             int lin = t[i].getLinha() - 0;
@@ -446,14 +402,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (tab.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         return false;
     }
 
@@ -474,14 +426,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if(t.PositionisEmpty(lin, col)==false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         for (int x = 1; x < 9; x++)
         {
             int lin = b[i].getLinha() + x;
@@ -497,14 +445,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (t.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         for (int x = 1; x < 9; x++)
         {
             int lin = b[i].getLinha() - x;
@@ -520,14 +464,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (t.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         for (int x = 1; x < 9; x++)
         {
             int lin = b[i].getLinha() - x;
@@ -543,14 +483,10 @@ public class Peca
                     lisLin.Add(lin);
                     lisCol.Add(col);
                 }
-                else if (t.PositionisEmpty(lin, col) == false)
-                {
-                    lisLin.Clear();
-                    lisCol.Clear();
-                    x = 10;
-                }
             }
         }
+        lisLin.Clear();
+        lisCol.Clear();
         return false;
     }
 
@@ -670,7 +606,7 @@ public class Peca
         }
         for (int i = 0; i < c.Count; i++)
         {
-            if (PulosCavalo(c,i))
+            if (PulosCavalo(c,i,tab))
             {
                 return true;
             }
@@ -699,37 +635,37 @@ public class Peca
         return false;
     }
 
-    private bool PulosCavalo(List<Cavalo> c,int i)
+    private bool PulosCavalo(List<Cavalo> c,int i,Tabuleiro t)
     {
-        if(c[i].getLinha()==linha-2&&c[i].getColuna()==coluna+1)
+        if(c[i].getLinha()==linha-2&&c[i].getColuna()==coluna+ 1 && isPermitidMoviment(0, c[i], null, null, null, linha-2, coluna+1, t))
         {
             return true;
         }
-        else if (c[i].getLinha() == linha - 1 && c[i].getColuna() == coluna + 2)
+        else if (c[i].getLinha() == linha - 1 && c[i].getColuna() == coluna + 2 && isPermitidMoviment(0, c[i], null, null, null, linha - 1, coluna + 2, t))
         {
             return true;
         }
-        else if (c[i].getLinha() == linha + 1 && c[i].getColuna() == coluna + 2)
+        else if (c[i].getLinha() == linha + 1 && c[i].getColuna() == coluna + 2 && isPermitidMoviment(0, c[i], null, null, null, linha + 1, coluna + 2, t))
         {
             return true;
         }
-        else if (c[i].getLinha() == linha + 2 && c[i].getColuna() == coluna + 1)
+        else if (c[i].getLinha() == linha + 2 && c[i].getColuna() == coluna + 1 && isPermitidMoviment(0, c[i], null, null, null, linha + 2, coluna + 1, t))
         {
             return true;
         }
-        else if (c[i].getLinha() == linha + 2 && c[i].getColuna() == coluna - 1)
+        else if (c[i].getLinha() == linha + 2 && c[i].getColuna() == coluna - 1 && isPermitidMoviment(0, c[i], null, null, null, linha + 2, coluna - 1, t))
         {
             return true;
         }
-        else if (c[i].getLinha() == linha + 1 && c[i].getColuna() == coluna - 2)
+        else if (c[i].getLinha() == linha + 1 && c[i].getColuna() == coluna - 2 && isPermitidMoviment(0, c[i], null, null, null, linha + 1, coluna - 2, t))
         {
             return true;
         }
-        else if (c[i].getLinha() == linha - 1 && c[i].getColuna() == coluna - 2)
+        else if (c[i].getLinha() == linha - 1 && c[i].getColuna() == coluna - 2 && isPermitidMoviment(0, c[i], null, null, null, linha - 1, coluna - 2, t))
         {
             return true;
         }
-        else if (c[i].getLinha() == linha - 2 && c[i].getColuna() == coluna - 1)
+        else if (c[i].getLinha() == linha - 2 && c[i].getColuna() == coluna - 1 && isPermitidMoviment(0, c[i], null, null, null, linha - 2, coluna - 1, t))
         {
             return true;
         }
@@ -744,7 +680,7 @@ public class Peca
             int col = b[i].getColuna() + x;
             if (b[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(1, null, b[i], null, null, lin, col, t))
                 {
                     return true;
                 }
@@ -767,7 +703,7 @@ public class Peca
             int col = b[i].getColuna() - x;
             if (b[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(1, null, b[i], null, null, lin, col, t))
                 {
                     return true;
                 }
@@ -790,7 +726,7 @@ public class Peca
             int col = b[i].getColuna() - x;
             if (b[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(1, null, b[i], null, null, lin, col, t))
                 {
                     return true;
                 }
@@ -813,7 +749,7 @@ public class Peca
             int col = b[i].getColuna() + x;
             if (b[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(1, null, b[i], null, null, lin, col, t))
                 {
                     return true;
                 }
@@ -841,7 +777,7 @@ public class Peca
             int col = t[i].getColuna() + 0;
             if (t[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(2, null, null, t[i], null, lin, col, tab))
                 {
                     return true;
                 }
@@ -864,7 +800,7 @@ public class Peca
             int col = t[i].getColuna() + x;
             if (t[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(2, null, null, t[i], null, lin, col, tab))
                 {
                     return true;
                 }
@@ -887,7 +823,7 @@ public class Peca
             int col = t[i].getColuna() + 0;
             if (t[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(2, null, null, t[i], null, lin, col, tab))
                 {
                     return true;
                 }
@@ -910,7 +846,7 @@ public class Peca
             int col = t[i].getColuna() - x;
             if (t[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(2, null, null, t[i], null, lin, col, tab))
                 {
                     return true;
                 }
@@ -936,9 +872,11 @@ public class Peca
         {
             int lin = d[i].getLinha() + x;
             int col = d[i].getColuna() + x;
+
+            
             if (d[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(3,null,null,null,d[i],lin,col,tab))
                 {
                     return true;
                 }
@@ -961,7 +899,7 @@ public class Peca
             int col = d[i].getColuna() - x;
             if (d[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(3, null, null, null, d[i], lin, col, tab))
                 {
                     return true;
                 }
@@ -984,7 +922,7 @@ public class Peca
             int col = d[i].getColuna() - x;
             if (d[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(3, null, null, null, d[i], lin, col, tab))
                 {
                     return true;
                 }
@@ -1007,7 +945,7 @@ public class Peca
             int col = d[i].getColuna() + x;
             if (d[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(3, null, null, null, d[i], lin, col, tab))
                 {
                     return true;
                 }
@@ -1030,7 +968,7 @@ public class Peca
             int col = d[i].getColuna() + 0;
             if (d[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(3, null, null, null, d[i], lin, col, tab))
                 {
                     return true;
                 }
@@ -1053,7 +991,7 @@ public class Peca
             int col = d[i].getColuna() + x;
             if (d[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(3, null, null, null, d[i], lin, col, tab))
                 {
                     return true;
                 }
@@ -1076,7 +1014,7 @@ public class Peca
             int col = d[i].getColuna() + 0;
             if (d[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(3, null, null, null, d[i], lin, col, tab))
                 {
                     return true;
                 }
@@ -1099,7 +1037,7 @@ public class Peca
             int col = d[i].getColuna() - x;
             if (d[i].CheckPossible(lin, col))
             {
-                if (lin == linha && col == coluna)
+                if (lin == linha && col == coluna && isPermitidMoviment(3, null, null, null, d[i], lin, col, tab))
                 {
                     return true;
                 }
@@ -1117,5 +1055,103 @@ public class Peca
             }
         }
         return false;
+    }
+
+    private bool isPermitidMoviment(int type,Cavalo c, Bispo b,Torre t,Dama d,int lin,int col,Tabuleiro tab)
+    {
+        bool ok = true;
+        if (type == 0)
+        {
+            int li = c.getLinha();
+            int co = c.getColuna();
+            c.setLinha(lin);
+            c.setColuna(col);
+            if (cor == 0)
+            {
+                if (tab.getReiPreto().isCheck(tab))
+                {
+                    ok = false;
+                }
+            }
+            else
+            {
+                if (tab.getReiBranco().isCheck(tab))
+                {
+                    ok = false;
+                }
+            }
+            c.setLinha(li);
+            c.setColuna(co);
+        }
+        else if (type == 1)
+        {
+            int li = b.getLinha();
+            int co = b.getColuna();
+            b.setLinha(lin);
+            b.setColuna(col);
+            if (cor == 0)
+            {
+                if (tab.getReiPreto().isCheck(tab))
+                {
+                    ok = false;
+                }
+            }
+            else
+            {
+                if (tab.getReiBranco().isCheck(tab))
+                {
+                    ok = false;
+                }
+            }
+            b.setLinha(li);
+            b.setColuna(co);
+        }
+        else if (type == 2)
+        {
+            int li = t.getLinha();
+            int co = t.getColuna();
+            t.setLinha(lin);
+            t.setColuna(col);
+            if (cor == 0)
+            {
+                if (tab.getReiPreto().isCheck(tab))
+                {
+                    ok = false;
+                }
+            }
+            else
+            {
+                if (tab.getReiBranco().isCheck(tab))
+                {
+                    ok = false;
+                }
+            }
+            t.setLinha(li);
+            t.setColuna(co);
+        }
+        else if (type == 3)
+        {
+            int li = d.getLinha();
+            int co = d.getColuna();
+            d.setLinha(lin);
+            d.setColuna(col);
+            if (cor == 0)
+            {
+                if (tab.getReiPreto().isCheck(tab))
+                {
+                    ok = false;
+                }
+            }
+            else
+            {
+                if (tab.getReiBranco().isCheck(tab))
+                {
+                    ok = false;
+                }
+            }
+            d.setLinha(li);
+            d.setColuna(co);
+        }
+        return ok;
     }
 }
