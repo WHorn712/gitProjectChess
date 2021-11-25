@@ -740,45 +740,38 @@ public class Tabuleiro
 
     public void ReecolockPeca(int lin, int col)
     {
-        if (pecaMoveCheck == 0)
+        switch (pecaMoveCheck)
         {
-            pb.Add(new Peao(0, lin, col));
-        }
-        else if (pecaMoveCheck == 1)
-        {
-            cb.Add(new Cavalo(0, lin, col));
-        }
-        else if (pecaMoveCheck == 2)
-        {
-            bb.Add(new Bispo(0, lin, col));
-        }
-        else if (pecaMoveCheck == 3)
-        {
-            tb.Add(new Torre(0, lin, col));
-        }
-        else if (pecaMoveCheck == 4)
-        {
-            db.Add(new Dama(0, lin, col));
-        }
-        else if (pecaMoveCheck == 5)
-        {
-            pp.Add(new Peao(1, lin, col));
-        }
-        else if (pecaMoveCheck == 6)
-        {
-            cp.Add(new Cavalo(1, lin, col));
-        }
-        else if (pecaMoveCheck == 7)
-        {
-            bp.Add(new Bispo(1, lin, col));
-        }
-        else if (pecaMoveCheck == 8)
-        {
-            tp.Add(new Torre(1, lin, col));
-        }
-        else if (pecaMoveCheck == 9)
-        {
-            dp.Add(new Dama(1, lin, col));
+            case 0:
+                pb.Add(new Peao(0, lin, col));
+                break;
+            case 1:
+                cb.Add(new Cavalo(0, lin, col));
+                break;
+            case 2:
+                bb.Add(new Bispo(0, lin, col));
+                break;
+            case 3:
+                tb.Add(new Torre(0, lin, col));
+                break;
+            case 4:
+                db.Add(new Dama(0, lin, col));
+                break;
+            case 5:
+                pp.Add(new Peao(1, lin, col));
+                break;
+            case 6:
+                cp.Add(new Cavalo(1, lin, col));
+                break;
+            case 7:
+                bp.Add(new Bispo(1, lin, col));
+                break;
+            case 8:
+                tp.Add(new Torre(1, lin, col));
+                break;
+            case 9:
+                dp.Add(new Dama(1, lin, col));
+                break;
         }
         pecaMoveCheck = -1;
     }
@@ -1187,7 +1180,50 @@ public class Tabuleiro
         }
         return true;
     }
-
+    
+    public void MovePromotion(int type,int cor, int index,int linOr, int colOr, int linDes,int colDes)
+    {
+        //type==0-> promoção de peao sem eliminar nenhum peça inimiga
+        //type==1-> promoção de peao eliminando peça inimiga
+        if(cor==0)
+        {
+            pb[index].setLinha(linDes);
+            if(type==1)
+            {
+                PositionisEmptyPreto(7, colDes, 1);
+                pb[index].setColuna(colDes);
+                if(reiBranco.isCheck(this))
+                {
+                    ReecolockPeca(7,colDes);
+                    pb[index].setColuna(colOr);
+                    pb[index].setLinha(linOr);
+                }
+            }
+            else if(type==0 && reiBranco.isCheck(this))
+            {
+                pb[index].setLinha(linOr);
+            }
+        }
+        else
+        {
+            pp[index].setLinha(linDes);
+            if(type==1)
+            {
+                PositionisEmptyBranco(0,colDes,1);
+                pp[index].setColuna(colDes);
+                if(reiPreto.isCheck(this))
+                {
+                    ReecolockPeca(0,colDes);
+                    pp[index].setColuna(colOr);
+                    pp[index].setLinha(linOr);
+                }
+            }
+            else if(type==0 && reiPreto.isCheck(this))
+            {
+                pp[index].setLinha(linOr);
+            }
+        }
+    }
     public void Promotion(int index,int cor,int lin,int col,int type)
     {
         if(cor==0)

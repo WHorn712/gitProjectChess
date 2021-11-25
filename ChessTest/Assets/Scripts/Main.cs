@@ -80,6 +80,7 @@ public class Main : MonoBehaviour
     private int cor = 0;
     private int linhaPeao = 0;
     private int colunaPeao = 0;
+    private int typeOfMove = -1;
     [SerializeField]
     private GameObject imageTelaPromotion;
 
@@ -283,12 +284,14 @@ public class Main : MonoBehaviour
             }
         }
     }
+
     public void ClickPromotion(int type)
     {
-        tab.Promotion(index, cor, linhaPeao, colunaPeao, type);
+        tab.MovePromotion(typeOfMove,vez,index,linOr,colOr,linDes,colDes);
+        tab.Promotion(index, vez, linhaPeao, colunaPeao, type);
         ChangeImagePeao(type);
         imageTelaPromotion.SetActive(false);
-        if (cor==0)
+        if (vez==0)
         {
             if (tab.getReiPreto().isCheck(tab))
             {
@@ -324,6 +327,7 @@ public class Main : MonoBehaviour
             {
                 if(tab.getPb()[i].Linha()==7)
                 {
+                    Debug.Log("c==0");
                     cor = 0;
                     index = i;
                     imageTelaPromotion.SetActive(true);
@@ -335,10 +339,11 @@ public class Main : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < tab.getPb().Count; i++)
+            for (int i = 0; i < tab.getPp().Count; i++)
             {
-                if (tab.getPb()[i].Linha() == 7)
+                if (tab.getPp()[i].Linha() == 7)
                 {
+                    Debug.Log("c==1");
                     cor = 1;
                     index = i;
                     imageTelaPromotion.SetActive(true);
@@ -357,6 +362,61 @@ public class Main : MonoBehaviour
         imageTelaPromotion.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = c;
     }
 
+    private bool isPeaoPromotion(int c)
+    {
+        if(c==0)
+        {
+            for(int i=0;i<tab.getPb().Count;i++)
+            {
+                if(tab.getPb()[i].Linha()==6 && tab.getPb()[i].Linha()==linOr && tab.getPb()[i].Linha()+1==linDes && 
+                    tab.getPb()[i].Coluna()==colOr&& tab.getPb()[i].Coluna()==colDes && tab.PositionisEmpty(7, tab.getPb()[i].Coluna()))
+                {
+                    ChangeImagePromotion(damaBranco, torreBranco, bispoBranco, cavaloBranco);
+                    index = i;
+                    imageTelaPromotion.SetActive(true);
+                    typeOfMove = 0;
+                    return true;
+                }
+                else if (tab.getPb()[i].Linha() == 6 && tab.getPb()[i].Linha() == linOr && tab.getPb()[i].Linha() + 1 == linDes &&
+                    tab.getPb()[i].Coluna() == colOr && (tab.getPb()[i].Coluna()+1 == colDes || tab.getPb()[i].Coluna() - 1 == colDes) &&
+                    (tab.PositionisEmptyPreto(7, tab.getPb()[i].Coluna()+1,0)==false || tab.PositionisEmptyPreto(7, tab.getPb()[i].Coluna() - 1, 0)==false))
+                {
+                    typeOfMove = 1;
+                    ChangeImagePromotion(damaBranco, torreBranco, bispoBranco, cavaloBranco);
+                    index = i;
+                    imageTelaPromotion.SetActive(true);
+                    return true;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < tab.getPp().Count; i++)
+            {
+                if (tab.getPp()[i].Linha() == 1 && tab.getPp()[i].Linha() == linOr && tab.getPp()[i].Linha() - 1 == linDes &&
+                    tab.getPp()[i].Coluna() == colOr && tab.getPp()[i].Coluna() == colDes && tab.PositionisEmpty(0, tab.getPp()[i].Coluna()))
+                {
+                    typeOfMove = 0;
+                    ChangeImagePromotion(damaPreto, torrePreto, bispoPreto, cavaloPreto);
+                    index = i;
+                    imageTelaPromotion.SetActive(true);
+                    return true;
+                }
+                else if (tab.getPp()[i].Linha() == 1 && tab.getPp()[i].Linha() == linOr && tab.getPp()[i].Linha() - 1 == linDes &&
+                    tab.getPp()[i].Coluna() == colOr && (tab.getPp()[i].Coluna()+1 == colDes || tab.getPp()[i].Coluna() - 1 == colDes) &&
+                    (tab.PositionisEmptyBranco(0,tab.getPp()[i].Coluna()+1,0)==false || tab.PositionisEmptyBranco(0, tab.getPp()[i].Coluna() - 1, 0) == false))
+                {
+                    typeOfMove = 1;
+                    ChangeImagePromotion(damaPreto, torrePreto, bispoPreto, cavaloPreto);
+                    index = i;
+                    imageTelaPromotion.SetActive(true);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public void ClickPosition(GameObject go)
     {
         int a = go.transform.GetSiblingIndex();
@@ -369,40 +429,43 @@ public class Main : MonoBehaviour
             linDes = a;
             colDes = b;
             imageSelect.transform.GetChild(colOr).transform.GetChild(linOr).gameObject.SetActive(false);
-            bool ab = tab.isMove(linOr, colOr, vez, linDes, colDes);
-            
-            if (ab)
+            if(isPeaoPromotion(c)==false)
             {
-                PromotionPeao(c);
-                Debug.Log(linOr+"."+colOr+"  /  "+linDes+"."+colDes);
-                jogadas += linOr + "." + colOr + "." + linDes + "." + colDes + " / ";
-                ToMakeLance(linOr, colOr, linDes, colDes);
-                if(c==0)
+                bool ab = tab.isMove(linOr, colOr, vez, linDes, colDes);
+
+                if (ab)
                 {
-                    if(tab.getReiPreto().isCheck(tab))
+                    PromotionPeao(c);
+                    Debug.Log(linOr + "." + colOr + "  /  " + linDes + "." + colDes);
+                    jogadas += linOr + "." + colOr + "." + linDes + "." + colDes + " / ";
+                    ToMakeLance(linOr, colOr, linDes, colDes);
+                    if (c == 0)
                     {
-                        if(tab.isCheckMateReiEndGame(c))
+                        if (tab.getReiPreto().isCheck(tab))
                         {
-                            Debug.Log("CHECK MATE. BRANCO VENCEU");
-                            tab.IsEnd = true;
+                            if (tab.isCheckMateReiEndGame(c))
+                            {
+                                Debug.Log("CHECK MATE. BRANCO VENCEU");
+                                tab.IsEnd = true;
+                            }
                         }
                     }
-                }
-                else if(c==1)
-                {
-                    if(tab.getReiBranco().isCheck(tab))
+                    else if (c == 1)
                     {
-                        if (tab.isCheckMateReiEndGame(c))
+                        if (tab.getReiBranco().isCheck(tab))
                         {
-                            Debug.Log("CHECK MATE. PRETO VENCEU");
-                            tab.IsEnd = true;
+                            if (tab.isCheckMateReiEndGame(c))
+                            {
+                                Debug.Log("CHECK MATE. PRETO VENCEU");
+                                tab.IsEnd = true;
+                            }
                         }
                     }
-                }
-                if(tab.isAfogamento(c))
-                {
-                    Debug.Log("EMPATE POR AFOGAMENTO");
-                    tab.IsEnd = true;
+                    if (tab.isAfogamento(c))
+                    {
+                        Debug.Log("EMPATE POR AFOGAMENTO");
+                        tab.IsEnd = true;
+                    }
                 }
             }
         }
