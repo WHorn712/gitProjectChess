@@ -247,7 +247,7 @@ public class Main : MonoBehaviour
 
     private void ChangeImagePeao(int type)
     {
-        if(cor==0)
+        if(vez==0)
         {
             switch(type)
             {
@@ -329,41 +329,7 @@ public class Main : MonoBehaviour
         }
         typeOfMove = -1;
     }
-    private void PromotionPeao(int c)
-    {
-        if(c==0)
-        {
-            for(int i=0;i<tab.getPb().Count;i++)
-            {
-                if(tab.getPb()[i].Linha()==7)
-                {
-                    Debug.Log("c==0");
-                    cor = 0;
-                    index = i;
-                    imageTelaPromotion.SetActive(true);
-                    linhaPeao = 7;
-                    colunaPeao = tab.getPb()[i].Coluna();
-                    ChangeImagePromotion(damaBranco,torreBranco,bispoBranco,cavaloBranco);
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < tab.getPp().Count; i++)
-            {
-                if (tab.getPp()[i].Linha() == 7)
-                {
-                    Debug.Log("c==1");
-                    cor = 1;
-                    index = i;
-                    imageTelaPromotion.SetActive(true);
-                    linhaPeao = 0;
-                    colunaPeao = tab.getPp()[i].Coluna();
-                    ChangeImagePromotion(damaPreto, torrePreto, bispoPreto, cavaloPreto);
-                }
-            }
-        }
-    }
+    
     private void ChangeImagePromotion(Sprite d,Sprite t,Sprite b,Sprite c)
     {
         imageTelaPromotion.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = d;
@@ -445,7 +411,6 @@ public class Main : MonoBehaviour
 
                 if (ab)
                 {
-                    PromotionPeao(c);
                     Debug.Log(linOr + "." + colOr + "  /  " + linDes + "." + colDes);
                     jogadas += linOr + "." + colOr + "." + linDes + "." + colDes + " / ";
                     ToMakeLance(linOr, colOr, linDes, colDes);
