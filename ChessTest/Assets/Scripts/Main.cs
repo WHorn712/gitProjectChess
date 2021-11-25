@@ -252,16 +252,20 @@ public class Main : MonoBehaviour
             switch(type)
             {
                 case 0:
-                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = damaBranco;
+                    ChangeImagePos(8, LxC.transform.GetChild(colDes).transform.GetChild(linDes).gameObject);
+                    LxC.transform.GetChild(colOr).transform.GetChild(linOr).GetComponent<Image>().color = new Color(1,1,1,0);
                     break;
                 case 1:
-                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = torreBranco;
+                    ChangeImagePos(6, LxC.transform.GetChild(colDes).transform.GetChild(linDes).gameObject);
+                    LxC.transform.GetChild(colOr).transform.GetChild(linOr).GetComponent<Image>().color = new Color(1, 1, 1, 0);
                     break;
                 case 2:
-                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = bispoBranco;
+                    ChangeImagePos(4, LxC.transform.GetChild(colDes).transform.GetChild(linDes).gameObject);
+                    LxC.transform.GetChild(colOr).transform.GetChild(linOr).GetComponent<Image>().color = new Color(1, 1, 1, 0);
                     break;
                 case 3:
-                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = cavaloBranco;
+                    ChangeImagePos(2, LxC.transform.GetChild(colDes).transform.GetChild(linDes).gameObject);
+                    LxC.transform.GetChild(colOr).transform.GetChild(linOr).GetComponent<Image>().color = new Color(1, 1, 1, 0);
                     break;
             }
         }
@@ -270,16 +274,20 @@ public class Main : MonoBehaviour
             switch (type)
             {
                 case 0:
-                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = damaPreto;
+                    ChangeImagePos(9, LxC.transform.GetChild(colDes).transform.GetChild(linDes).gameObject);
+                    LxC.transform.GetChild(colOr).transform.GetChild(linOr).GetComponent<Image>().color = new Color(1, 1, 1, 0);
                     break;
                 case 1:
-                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = torrePreto;
+                    ChangeImagePos(7, LxC.transform.GetChild(colDes).transform.GetChild(linDes).gameObject);
+                    LxC.transform.GetChild(colOr).transform.GetChild(linOr).GetComponent<Image>().color = new Color(1, 1, 1, 0);
                     break;
                 case 2:
-                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = bispoPreto;
+                    ChangeImagePos(5, LxC.transform.GetChild(colDes).transform.GetChild(linDes).gameObject);
+                    LxC.transform.GetChild(colOr).transform.GetChild(linOr).GetComponent<Image>().color = new Color(1, 1, 1, 0);
                     break;
                 case 3:
-                    LxC.transform.GetChild(colunaPeao).transform.GetChild(linhaPeao).GetComponent<Image>().sprite = cavaloPreto;
+                    ChangeImagePos(3, LxC.transform.GetChild(colDes).transform.GetChild(linDes).gameObject);
+                    LxC.transform.GetChild(colOr).transform.GetChild(linOr).GetComponent<Image>().color = new Color(1, 1, 1, 0);
                     break;
             }
         }
@@ -288,9 +296,10 @@ public class Main : MonoBehaviour
     public void ClickPromotion(int type)
     {
         tab.MovePromotion(typeOfMove,vez,index,linOr,colOr,linDes,colDes);
-        tab.Promotion(index, vez, linhaPeao, colunaPeao, type);
+        tab.Promotion(index, vez, linDes, colDes, type);
         ChangeImagePeao(type);
         imageTelaPromotion.SetActive(false);
+        tab.Imprex();
         if (vez==0)
         {
             if (tab.getReiPreto().isCheck(tab))
@@ -318,6 +327,7 @@ public class Main : MonoBehaviour
             Debug.Log("EMPATE POR AFOGAMENTO");
             tab.IsEnd = true;
         }
+        typeOfMove = -1;
     }
     private void PromotionPeao(int c)
     {
