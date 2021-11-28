@@ -1180,7 +1180,35 @@ public class Tabuleiro
         }
         return true;
     }
-    
+
+    public bool isPossibleToMovePromotion(int v,int linOr,int colOr,int linDes,int colDes,int i)
+    {
+        bool ok = true;
+        //v==cor
+        if(v==0)
+        {
+            pb[i].setLinha(linDes);
+            pb[i].setColuna(colDes);
+            if(reiBranco.isCheck(this))
+            {
+                ok = false;
+            }
+            pb[i].setLinha(linOr);
+            pb[i].setColuna(colOr);
+        }
+        else
+        {
+            pp[i].setLinha(linDes);
+            pp[i].setColuna(colDes);
+            if (reiPreto.isCheck(this))
+            {
+                ok = false;
+            }
+            pp[i].setLinha(linOr);
+            pp[i].setColuna(colOr);
+        }
+        return ok;
+    }
     public void MovePromotion(int type,int cor, int index,int linOr, int colOr, int linDes,int colDes)
     {
         //type==0-> promoção de peao sem eliminar nenhum peça inimiga

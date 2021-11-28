@@ -84,6 +84,7 @@ public class Main : MonoBehaviour
     [SerializeField]
     private GameObject imageTelaPromotion;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -111,6 +112,11 @@ public class Main : MonoBehaviour
             Debug.Log(jogadas);
         }
     }
+    public void ClickDesativeTela()
+    {
+        imageTelaPromotion.SetActive(false);
+    }
+
 
     private void IniateDictionary()
     {
@@ -345,7 +351,8 @@ public class Main : MonoBehaviour
             for(int i=0;i<tab.getPb().Count;i++)
             {
                 if(tab.getPb()[i].Linha()==6 && tab.getPb()[i].Linha()==linOr && tab.getPb()[i].Linha()+1==linDes && 
-                    tab.getPb()[i].Coluna()==colOr&& tab.getPb()[i].Coluna()==colDes && tab.PositionisEmpty(7, tab.getPb()[i].Coluna()))
+                    tab.getPb()[i].Coluna()==colOr&& tab.getPb()[i].Coluna()==colDes && tab.PositionisEmpty(7, tab.getPb()[i].Coluna()) &&
+                    tab.isPossibleToMovePromotion(vez, linOr, colOr, linDes, colDes, i))
                 {
                     ChangeImagePromotion(damaBranco, torreBranco, bispoBranco, cavaloBranco);
                     index = i;
@@ -355,7 +362,8 @@ public class Main : MonoBehaviour
                 }
                 else if (tab.getPb()[i].Linha() == 6 && tab.getPb()[i].Linha() == linOr && tab.getPb()[i].Linha() + 1 == linDes &&
                     tab.getPb()[i].Coluna() == colOr && (tab.getPb()[i].Coluna()+1 == colDes || tab.getPb()[i].Coluna() - 1 == colDes) &&
-                    (tab.PositionisEmptyPreto(7, tab.getPb()[i].Coluna()+1,0)==false || tab.PositionisEmptyPreto(7, tab.getPb()[i].Coluna() - 1, 0)==false))
+                    (tab.PositionisEmptyPreto(7, tab.getPb()[i].Coluna()+1,0)==false || tab.PositionisEmptyPreto(7, tab.getPb()[i].Coluna() - 1, 0)==false) &&
+                    tab.isPossibleToMovePromotion(vez, linOr, colOr, linDes, colDes, i))
                 {
                     typeOfMove = 1;
                     ChangeImagePromotion(damaBranco, torreBranco, bispoBranco, cavaloBranco);
@@ -370,7 +378,8 @@ public class Main : MonoBehaviour
             for (int i = 0; i < tab.getPp().Count; i++)
             {
                 if (tab.getPp()[i].Linha() == 1 && tab.getPp()[i].Linha() == linOr && tab.getPp()[i].Linha() - 1 == linDes &&
-                    tab.getPp()[i].Coluna() == colOr && tab.getPp()[i].Coluna() == colDes && tab.PositionisEmpty(0, tab.getPp()[i].Coluna()))
+                    tab.getPp()[i].Coluna() == colOr && tab.getPp()[i].Coluna() == colDes && tab.PositionisEmpty(0, tab.getPp()[i].Coluna()) && 
+                    tab.isPossibleToMovePromotion(vez,linOr,colOr,linDes,colDes,i))
                 {
                     typeOfMove = 0;
                     ChangeImagePromotion(damaPreto, torrePreto, bispoPreto, cavaloPreto);
@@ -380,7 +389,8 @@ public class Main : MonoBehaviour
                 }
                 else if (tab.getPp()[i].Linha() == 1 && tab.getPp()[i].Linha() == linOr && tab.getPp()[i].Linha() - 1 == linDes &&
                     tab.getPp()[i].Coluna() == colOr && (tab.getPp()[i].Coluna()+1 == colDes || tab.getPp()[i].Coluna() - 1 == colDes) &&
-                    (tab.PositionisEmptyBranco(0,tab.getPp()[i].Coluna()+1,0)==false || tab.PositionisEmptyBranco(0, tab.getPp()[i].Coluna() - 1, 0) == false))
+                    (tab.PositionisEmptyBranco(0,tab.getPp()[i].Coluna()+1,0)==false || tab.PositionisEmptyBranco(0, tab.getPp()[i].Coluna() - 1, 0) == false) &&
+                    tab.isPossibleToMovePromotion(vez, linOr, colOr, linDes, colDes, i))
                 {
                     typeOfMove = 1;
                     ChangeImagePromotion(damaPreto, torrePreto, bispoPreto, cavaloPreto);
