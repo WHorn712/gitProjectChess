@@ -1068,14 +1068,14 @@ public class Peca
             c.setColuna(col);
             if (cor == 0)
             {
-                if (tab.getReiPreto().isCheck(tab))
+                if (tab.getReiBranco().isCheck(tab))
                 {
                     ok = false;
                 }
             }
             else
             {
-                if (tab.getReiBranco().isCheck(tab))
+                if (tab.getReiPreto().isCheck(tab))
                 {
                     ok = false;
                 }
@@ -1091,14 +1091,14 @@ public class Peca
             b.setColuna(col);
             if (cor == 0)
             {
-                if (tab.getReiPreto().isCheck(tab))
+                if (tab.getReiBranco().isCheck(tab))
                 {
                     ok = false;
                 }
             }
             else
             {
-                if (tab.getReiBranco().isCheck(tab))
+                if (tab.getReiPreto().isCheck(tab))
                 {
                     ok = false;
                 }
@@ -1114,14 +1114,14 @@ public class Peca
             t.setColuna(col);
             if (cor == 0)
             {
-                if (tab.getReiPreto().isCheck(tab))
+                if (tab.getReiBranco().isCheck(tab))
                 {
                     ok = false;
                 }
             }
             else
             {
-                if (tab.getReiBranco().isCheck(tab))
+                if (tab.getReiPreto().isCheck(tab))
                 {
                     ok = false;
                 }
@@ -1137,14 +1137,14 @@ public class Peca
             d.setColuna(col);
             if (cor == 0)
             {
-                if (tab.getReiPreto().isCheck(tab))
+                if (tab.getReiBranco().isCheck(tab))
                 {
                     ok = false;
                 }
             }
             else
             {
-                if (tab.getReiBranco().isCheck(tab))
+                if (tab.getReiPreto().isCheck(tab))
                 {
                     ok = false;
                 }

@@ -99,7 +99,7 @@ public class Main : MonoBehaviour
         
         tab = new Tabuleiro(p);
     }
-
+    int contador = 0;
     // Update is called once per frame
     void Update()
     {
@@ -305,11 +305,19 @@ public class Main : MonoBehaviour
         tab.Promotion(index, vez, linDes, colDes, type);
         ChangeImagePeao(type);
         imageTelaPromotion.SetActive(false);
-        tab.Imprex();
-        if (vez==0)
+        vez = vez == 0 ? 1 : 0;
+        AnalizeIfInCheck();
+        vez = vez == 0 ? 1 : 0;
+    }
+
+    private void AnalizeIfInCheck()
+    {
+        if (vez == 0)
         {
+            Debug.Log("main 310");
             if (tab.getReiPreto().isCheck(tab))
             {
+                Debug.Log("main 313");
                 if (tab.isCheckMateReiEndGame(cor))
                 {
                     Debug.Log("CHECK MATE. BRANCO VENCEU");
@@ -328,7 +336,7 @@ public class Main : MonoBehaviour
                 }
             }
         }
-        if(tab.isAfogamento(cor))
+        if (tab.isAfogamento(cor))
         {
             Debug.Log("EMPATE POR AFOGAMENTO");
             tab.IsEnd = true;
